@@ -77,5 +77,3 @@
 <img src="https://github.com/dorisoy/Dorisoy.PeriodontalChat.Maui/blob/main/Screen/1.png"/>
 
 <img src="https://github.com/dorisoy/Dorisoy.PeriodontalChat.Maui/blob/main/Screen/2.png"/>
-
-<img src=""/>
