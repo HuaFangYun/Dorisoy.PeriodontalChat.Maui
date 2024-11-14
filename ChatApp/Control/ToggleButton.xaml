@@ -1,0 +1,15 @@
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Dorisoy.PeriodontalChat.Control"
+             x:Class="Dorisoy.PeriodontalChat.Control.ToggleButton"
+             x:Name="this">
+
+    <!-- 自定义控件的内容 -->
+    <Button x:Name="DataColumn"
+            StyleClass="ChartButton"
+            Text="{Binding Source={RelativeSource AncestorType={x:Type local:ToggleButton}},Path=Text}"
+            BackgroundColor="{Binding Source={RelativeSource AncestorType={x:Type local:ToggleButton}},Path=ButtonColor}"
+            ImageSource="{Binding Source={RelativeSource AncestorType={x:Type local:ToggleButton}},Path=Image}"
+            Command="{Binding Source={RelativeSource AncestorType={x:Type local:ToggleButton}},Path=ToggleCommand}" />
+
+</ContentView>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Dorisoy.PeriodontalChat"
+             xmlns:ctl="clr-namespace:Dorisoy.PeriodontalChat.Control"
+             xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+             x:Class="Dorisoy.PeriodontalChat.Pages.Dental.row15table4">
+    <ContentView.BindingContext>
+        <vm:Table4 />
+    </ContentView.BindingContext>
+    <Grid ColumnDefinitions="90,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*"
+          HorizontalOptions="Fill"
+          HeightRequest="40"
+          BindableLayout.ItemsSource="{Binding Row15}">
+        <!--缺失-->
+        <BindableLayout.ItemTemplate>
+            <DataTemplate>
+                <Grid  Grid.Column="{Binding ToothIndex}"
+                       HorizontalOptions="Fill">
+
+                    <!-- 标题 -->
+                    <Label x:Name="FirstColumn"
+                           Background="{StaticResource Secondary}"
+                           HorizontalOptions="Fill"
+                           TextColor="White"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           VerticalOptions="Fill"
+                           Text="缺失"
+                           IsVisible="False" />
+
+                    <!-- 数据列 -->
+                    <material:CheckBox x:Name="DataColumn"
+                                       HorizontalOptions="Center"
+                                       Margin="18,4,0,4"
+                                       IsChecked="{Binding Available}" />
+
+                    <Grid.Triggers>
+                        <DataTrigger TargetType="Grid"
+                                     Binding="{Binding ToothIndex}"
+                                     Value="0">
+                            <Setter TargetName="FirstColumn"
+                                    Property="IsVisible"
+                                    Value="True" />
+                            <Setter TargetName="DataColumn"
+                                    Property="IsVisible"
+                                    Value="False" />
+                        </DataTrigger>
+                    </Grid.Triggers>
+
+                </Grid>
+            </DataTemplate>
+        </BindableLayout.ItemTemplate>
+
+    </Grid>
+</ContentView>

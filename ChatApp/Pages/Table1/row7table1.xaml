@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Dorisoy.PeriodontalChat"
+             xmlns:ctl="clr-namespace:Dorisoy.PeriodontalChat.Control"
+             x:Class="Dorisoy.PeriodontalChat.Pages.Dental.row7table1">
+    <ContentView.BindingContext>
+        <vm:Table1 />
+    </ContentView.BindingContext>
+
+    <Grid ColumnDefinitions="90,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*"
+          HorizontalOptions="Fill"
+          BindableLayout.ItemsSource="{Binding Row7}">
+        
+        <!--龋齿-->
+        <BindableLayout.ItemTemplate>
+            <DataTemplate>
+                <Grid  Grid.Column="{Binding ToothIndex}"
+                       HorizontalOptions="Fill">
+
+                    <Label x:Name="FirstColumn"
+                           Background="{StaticResource Secondary}"
+                           HorizontalOptions="Fill"
+                           TextColor="White"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           VerticalOptions="Fill"
+                           Text="龋齿"
+                           IsVisible="False" />
+
+                    <Grid  x:Name="DataColumn"
+                           RowDefinitions="*,*"
+                           ColumnDefinitions="*,*,*"
+                           HorizontalOptions="Fill">
+
+                        <ctl:ToggleButton  Grid.Row="0"
+                                           Grid.Column="0"
+                                           StyleClass="ChartButton"
+                                           UncheckedColor="#dddddd"
+                                           CheckedColor="#594ae2"
+                                           Text="{Binding DentalCaries.Number1}"
+                                           IsChecked="{Binding DentalCaries.Point1,Mode=TwoWay}" />
+                        <ctl:ToggleButton  Grid.Row="0"
+                                           Grid.Column="1"
+                                           StyleClass="ChartButton"
+                                           UncheckedColor="#dddddd"
+                                           CheckedColor="#594ae2"
+                                           Text="{Binding DentalCaries.Number2}"
+                                           IsChecked="{Binding DentalCaries.Point2,Mode=TwoWay}" />
+                        <ctl:ToggleButton  Grid.Row="0"
+                                           Grid.Column="2"
+                                           StyleClass="ChartButton"
+                                           UncheckedColor="#dddddd"
+                                           CheckedColor="#594ae2"
+                                           Text="{Binding DentalCaries.Number3}"
+                                           IsChecked="{Binding DentalCaries.Point3,Mode=TwoWay}" />
+
+                        <ctl:ToggleButton  Grid.Row="1"
+                                           Grid.Column="0"
+                                           StyleClass="ChartButton"
+                                           UncheckedColor="#dddddd"
+                                           CheckedColor="#594ae2"
+                                           Text="{Binding DentalCaries.Number4}"
+                                           IsChecked="{Binding DentalCaries.Point4,Mode=TwoWay}" />
+                        <ctl:ToggleButton  Grid.Row="1"
+                                           Grid.Column="1"
+                                           StyleClass="ChartButton"
+                                           UncheckedColor="#dddddd"
+                                           CheckedColor="#594ae2"
+                                           Text="{Binding DentalCaries.Number5}"
+                                           IsChecked="{Binding DentalCaries.Point5,Mode=TwoWay}" />
+                        <ctl:ToggleButton  Grid.Row="1"
+                                           Grid.Column="2"
+                                           StyleClass="ChartButton"
+                                           UncheckedColor="#dddddd"
+                                           CheckedColor="#594ae2"
+                                           Text="{Binding DentalCaries.Number6}"
+                                           IsChecked="{Binding DentalCaries.Point6,Mode=TwoWay}" />
+
+                    </Grid>
+
+
+                    <Grid.Triggers>
+                        <DataTrigger TargetType="Grid"
+                                     Binding="{Binding ToothIndex}"
+                                     Value="0">
+                            <Setter TargetName="FirstColumn"
+                                    Property="IsVisible"
+                                    Value="True" />
+                            <Setter TargetName="DataColumn"
+                                    Property="IsVisible"
+                                    Value="False" />
+                        </DataTrigger>
+                        <DataTrigger TargetType="Grid"
+                                     Binding="{Binding Available}"
+                                     Value="True">
+                            <Setter TargetName="DataColumn"
+                                    Property="IsVisible"
+                                    Value="False" />
+                        </DataTrigger>
+                    </Grid.Triggers>
+
+                </Grid>
+            </DataTemplate>
+        </BindableLayout.ItemTemplate>
+        
+    </Grid>
+</ContentView>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Dorisoy.PeriodontalChat"
+             x:Class="Dorisoy.PeriodontalChat.Pages.Dental.numbertable4">
+    <Grid ColumnDefinitions="90,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*"
+          HorizontalOptions="Fill">
+        <!--牙序-->
+        <Grid  Grid.Column="0"
+               HorizontalOptions="Fill">
+        </Grid>
+
+        <Grid  Grid.Column="1"
+               HorizontalOptions="Fill">
+            <Label Text="48"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+        </Grid>
+
+        <Grid  Grid.Column="2"
+               HorizontalOptions="Fill">
+            <Label Text="47"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+        </Grid>
+
+        <Grid  Grid.Column="3"
+               HorizontalOptions="Fill">
+            <Label Text="46"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+        </Grid>
+
+        <Grid  Grid.Column="4"
+               HorizontalOptions="Fill">
+            <Label Text="45"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+        </Grid>
+
+        <Grid  Grid.Column="5"
+               HorizontalOptions="Fill">
+            <Label Text="44"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+        </Grid>
+
+        <Grid  Grid.Column="6"
+               HorizontalOptions="Fill">
+            <Label Text="43"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+        </Grid>
+
+        <Grid  Grid.Column="7"
+               HorizontalOptions="Fill">
+            <Label Text="42"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+        </Grid>
+
+        <Grid  Grid.Column="8"
+               HorizontalOptions="Fill">
+            <Label Text="41"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+        </Grid>
+
+        <Grid  Grid.Column="9"
+               HorizontalOptions="Fill">
+            <Label Text="31"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+        </Grid>
+
+        <Grid  Grid.Column="10"
+               HorizontalOptions="Fill">
+            <Label Text="32"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+        </Grid>
+
+        <Grid  Grid.Column="11"
+               HorizontalOptions="Fill">
+            <Label Text="33"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+        </Grid>
+
+        <Grid  Grid.Column="12"
+               HorizontalOptions="Fill">
+            <Label Text="34"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+        </Grid>
+
+        <Grid  Grid.Column="13"
+               HorizontalOptions="Fill">
+            <Label Text="35"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+        </Grid>
+
+        <Grid  Grid.Column="14"
+               HorizontalOptions="Fill">
+            <Label Text="36"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+        </Grid>
+
+        <Grid  Grid.Column="15"
+               HorizontalOptions="Fill">
+            <Label Text="37"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+        </Grid>
+
+        <Grid  Grid.Column="16"
+               HorizontalOptions="Fill">
+            <Label Text="38"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+        </Grid>
+    </Grid>
+</ContentView>

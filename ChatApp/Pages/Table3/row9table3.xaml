@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Dorisoy.PeriodontalChat"
+             xmlns:ctl="clr-namespace:Dorisoy.PeriodontalChat.Control"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
+             xmlns:lvcore="clr-namespace:LiveChartsCore;assembly=LiveChartsCore"
+             x:Class="Dorisoy.PeriodontalChat.Pages.Dental.row9table3">
+    <ContentView.BindingContext>
+        <vm:Table3 />
+    </ContentView.BindingContext>
+    <Grid ColumnDefinitions="90,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*"
+          BindableLayout.ItemsSource="{Binding Row9}">
+        <!--腭侧-->
+        <BindableLayout.ItemTemplate>
+            <DataTemplate>
+                <Grid  Grid.Column="{Binding ToothIndex}"
+                       HorizontalOptions="Fill">
+
+                    <Label x:Name="FirstColumn"
+                           Background="{StaticResource Secondary}"
+                           HorizontalOptions="Fill"
+                           TextColor="White"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           VerticalOptions="Fill"
+                           Text="腭侧"
+                           IsVisible="False" />
+
+                    <Grid  x:Name="DataColumn"
+                           HorizontalOptions="Fill">
+                        <Image Source="{Binding ToothImage}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="End"
+                               MaximumHeightRequest="200">
+                            <!--DentalImplant-->
+                            <Image.Triggers>
+                                <DataTrigger TargetType="Image"
+                                             Binding="{Binding DentalImplant}"
+                                             Value="True">
+                                    <Setter Property="Source"
+                                            Value="{Binding DentalImplantImage}" />
+                                </DataTrigger>
+                                <DataTrigger TargetType="Image"
+                                             Binding="{Binding DentalImplant}"
+                                             Value="False">
+                                    <Setter Property="Source"
+                                            Value="{Binding ToothImage}" />
+                                </DataTrigger>
+                                <!--牙周炎PeriodontitisImage-->
+                                <DataTrigger TargetType="Image"
+                                             Binding="{Binding Periodontitis}"
+                                             Value="True">
+                                    <Setter Property="Source"
+                                            Value="{Binding PeriodontitisImage}" />
+                                </DataTrigger>
+                            </Image.Triggers>
+                        </Image>
+
+                        <!--龋齿-->
+                        <Image HorizontalOptions="Center"
+                               VerticalOptions="End"
+                               MaximumHeightRequest="200">
+                            <Image.Triggers>
+                                <DataTrigger TargetType="Image"
+                                             Binding="{Binding DentalCaries2.Point1}"
+                                             Value="True">
+                                    <Setter Property="Source"
+                                            Value="{Binding DentalCariesImage1}" />
+                                </DataTrigger>
+                            </Image.Triggers>
+                        </Image>
+                        <Image HorizontalOptions="Center"
+                               VerticalOptions="End"
+                               MaximumHeightRequest="200">
+                            <Image.Triggers>
+                                <DataTrigger TargetType="Image"
+                                             Binding="{Binding DentalCaries2.Point2}"
+                                             Value="True">
+                                    <Setter Property="Source"
+                                            Value="{Binding DentalCariesImage2}" />
+                                </DataTrigger>
+                            </Image.Triggers>
+                        </Image>
+                        <Image HorizontalOptions="Center"
+                               VerticalOptions="End"
+                               MaximumHeightRequest="200">
+                            <Image.Triggers>
+                                <DataTrigger TargetType="Image"
+                                             Binding="{Binding DentalCaries2.Point3}"
+                                             Value="True">
+                                    <Setter Property="Source"
+                                            Value="{Binding DentalCariesImage3}" />
+                                </DataTrigger>
+                            </Image.Triggers>
+                        </Image>
+                        <Image HorizontalOptions="Center"
+                               VerticalOptions="End"
+                               MaximumHeightRequest="200">
+                            <Image.Triggers>
+                                <DataTrigger TargetType="Image"
+                                             Binding="{Binding DentalCaries2.Point4}"
+                                             Value="True">
+                                    <Setter Property="Source"
+                                            Value="{Binding DentalCariesImage4}" />
+                                </DataTrigger>
+                            </Image.Triggers>
+                        </Image>
+                        <Image HorizontalOptions="Center"
+                               VerticalOptions="End"
+                               MaximumHeightRequest="200">
+                            <Image.Triggers>
+                                <DataTrigger TargetType="Image"
+                                             Binding="{Binding DentalCaries2.Point5}"
+                                             Value="True">
+                                    <Setter Property="Source"
+                                            Value="{Binding DentalCariesImage5}" />
+                                </DataTrigger>
+                            </Image.Triggers>
+                        </Image>
+                        <Image HorizontalOptions="Center"
+                               VerticalOptions="End"
+                               MaximumHeightRequest="200">
+                            <Image.Triggers>
+                                <DataTrigger TargetType="Image"
+                                             Binding="{Binding DentalCaries2.Point6}"
+                                             Value="True">
+                                    <Setter Property="Source"
+                                            Value="{Binding DentalCariesImage6}" />
+                                </DataTrigger>
+                            </Image.Triggers>
+                        </Image>
+
+                        <!--根分叉-->
+                        <Image HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               WidthRequest="10"
+                               HeightRequest="10">
+                            <Image.Triggers>
+                                <DataTrigger TargetType="Image"
+                                             Binding="{Binding RootBiFurcation.Counter1}"
+                                             Value="1">
+                                    <Setter Property="Source"
+                                            Value="f1.png" />
+                                </DataTrigger>
+                                <DataTrigger TargetType="Image"
+                                             Binding="{Binding RootBiFurcation.Counter1}"
+                                             Value="2">
+                                    <Setter Property="Source"
+                                            Value="f2.png" />
+                                </DataTrigger>
+                                <DataTrigger TargetType="Image"
+                                             Binding="{Binding RootBiFurcation.Counter1}"
+                                             Value="3">
+                                    <Setter Property="Source"
+                                            Value="f3.png" />
+                                </DataTrigger>
+                            </Image.Triggers>
+                        </Image>
+                        
+                        <!--Buccal图表-->
+                        <lvc:CartesianChart Series="{Binding Series}"
+                                            XAxes="{Binding XAxes}"
+                                            YAxes="{Binding YAxes}"
+                                            HeightRequest="100"
+                                            VerticalOptions="Center"
+                                            Margin="0,0,0,0"
+                                            IsVisible="{Binding ShowChat}">
+                        </lvc:CartesianChart>
+                    </Grid>
+
+                    <Grid.Triggers>
+                        <DataTrigger TargetType="Grid"
+                                     Binding="{Binding ToothIndex}"
+                                     Value="0">
+                            <Setter TargetName="FirstColumn"
+                                    Property="IsVisible"
+                                    Value="True" />
+                            <Setter TargetName="DataColumn"
+                                    Property="IsVisible"
+                                    Value="False" />
+                        </DataTrigger>
+                        <DataTrigger TargetType="Grid"
+                                     Binding="{Binding Available}"
+                                     Value="True">
+                            <Setter TargetName="DataColumn"
+                                    Property="IsVisible"
+                                    Value="False" />
+                        </DataTrigger>
+                    </Grid.Triggers>
+
+                </Grid>
+            </DataTemplate>
+        </BindableLayout.ItemTemplate>
+    </Grid>
+</ContentView>

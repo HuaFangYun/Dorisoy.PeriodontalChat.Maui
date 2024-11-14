@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Dorisoy.PeriodontalChat"
+             xmlns:ctl="clr-namespace:Dorisoy.PeriodontalChat.Control"
+             x:Class="Dorisoy.PeriodontalChat.Pages.Dental.row4table2">
+    <ContentView.BindingContext>
+        <vm:Table2 />
+    </ContentView.BindingContext>
+    <Grid ColumnDefinitions="90,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*"
+          HorizontalOptions="Fill"
+          BindableLayout.ItemsSource="{Binding Row4}">
+        
+        <!--根分叉-->
+        <BindableLayout.ItemTemplate>
+            <DataTemplate>
+                <Grid  Grid.Column="{Binding ToothIndex}"
+                       HorizontalOptions="Fill">
+
+                    <Label x:Name="FirstColumn"
+                           Background="{StaticResource Secondary}"
+                           HorizontalOptions="Fill"
+                           TextColor="White"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           VerticalOptions="Fill"
+                           Text="根分叉"
+                           IsVisible="False" />
+
+
+                    <Grid  x:Name="DataColumn"
+                           RowDefinitions="*,*"
+                           ColumnDefinitions="*,*,*"
+                           HorizontalOptions="Fill">
+                        <ctl:ToggleButton Grid.Row="0"
+                                          Grid.Column="0"
+                                          StyleClass="ChartButton"
+                                          UncheckedColor="#dddddd"
+                                          CheckedColor="#766ae7"
+                                          IsVisible="{Binding ShowRBF2}"
+                                          IsToggle="False"
+                                          Counter="{Binding RootBiFurcation2.Counter1,Mode=TwoWay}"
+                                          IsChecked="{Binding RootBiFurcation2.Point1,Mode=TwoWay}" />
+
+                        <ctl:ToggleButton Grid.Row="0"
+                                          Grid.Column="1"
+                                          StyleClass="ChartButton"
+                                          UncheckedColor="#dddddd"
+                                          CheckedColor="#766ae7"
+                                          IsVisible="{Binding ShowRBF2}"
+                                          IsToggle="False"
+                                          Counter="{Binding RootBiFurcation2.Counter2,Mode=TwoWay}"
+                                          IsChecked="{Binding RootBiFurcation2.Point2,Mode=TwoWay}" />
+                    </Grid>
+                    
+
+                    <Grid.Triggers>
+                        <DataTrigger TargetType="Grid"
+                                     Binding="{Binding ToothIndex}"
+                                     Value="0">
+                            <Setter TargetName="FirstColumn"
+                                    Property="IsVisible"
+                                    Value="True" />
+                            <Setter TargetName="DataColumn"
+                                    Property="IsVisible"
+                                    Value="False" />
+                        </DataTrigger>
+                        <DataTrigger TargetType="Grid"
+                                     Binding="{Binding Available}"
+                                     Value="True">
+                            <Setter TargetName="DataColumn"
+                                    Property="IsVisible"
+                                    Value="False" />
+                        </DataTrigger>
+                    </Grid.Triggers>
+
+                </Grid>
+            </DataTemplate>
+        </BindableLayout.ItemTemplate>
+
+    </Grid>
+</ContentView>

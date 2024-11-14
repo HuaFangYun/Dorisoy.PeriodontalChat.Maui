@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Dorisoy.PeriodontalChat.Pages.Dental.table1"
+             xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+             xmlns:vm="clr-namespace:Dorisoy.PeriodontalChat"
+             xmlns:v="clr-namespace:Dorisoy.PeriodontalChat.Pages.Dental">
+    <ContentView.BindingContext>
+        <vm:Periodontal />
+    </ContentView.BindingContext>
+    <Grid RowDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,210,*,*"
+          Margin="0">
+        <v:row1table1 Grid.Row="0"
+                      BindingContext="{Binding Table1}" />
+        <v:row2table1 Grid.Row="1"
+                      BindingContext="{Binding Table1}" />
+        <v:row3table1 Grid.Row="2"
+                      BindingContext="{Binding Table1}" />
+        <v:row4table1 Grid.Row="3"
+                      BindingContext="{Binding Table1}" />
+        <v:row5table1 Grid.Row="4"
+                      BindingContext="{Binding Table1}" />
+        <v:row6table1 Grid.Row="5"
+                      BindingContext="{Binding Table1}" />
+        <v:row7table1 Grid.Row="6"
+                      BindingContext="{Binding Table1}" />
+        <v:row8table1 Grid.Row="7"
+                      BindingContext="{Binding Table1}" />
+        <v:row9table1 Grid.Row="8"
+                      BindingContext="{Binding Table1}" />
+        <v:row10table1 Grid.Row="9"
+                       BindingContext="{Binding Table1}" />
+        <v:row11table1 Grid.Row="10"
+                       BindingContext="{Binding Table1}" />
+        <v:row12table1 Grid.Row="11"
+                       BindingContext="{Binding Table1}" />
+        <v:row13table1 Grid.Row="12"
+                       BindingContext="{Binding Table1}" />
+        <v:row14table1 Grid.Row="13"
+                       BindingContext="{Binding Table1}" />
+        <BoxView StyleClass="Divider"
+                 Margin="0"
+                 Grid.Row="14" />
+        <v:numbertable1 Grid.Row="15"
+                        Margin="0,8" />
+    </Grid>
+</ContentView>

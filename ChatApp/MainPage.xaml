@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Dorisoy.PeriodontalChat"
+             xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+             xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+             xmlns:m="clr-namespace:UraniumUI.Icons.MaterialSymbols;assembly=UraniumUI.Icons.MaterialSymbols"
+             xmlns:plain="clr-namespace:Plainer.Maui.Controls;assembly=Plainer.Maui"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:mtk="clr-namespace:MemoryToolkit.Maui;assembly=MemoryToolkit.Maui"
+             xmlns:v="clr-namespace:Dorisoy.PeriodontalChat.Pages.Dental"
+             xmlns:vm="clr-namespace:Dorisoy.PeriodontalChat"
+             BindingContext="{uranium:Inject {Type vm:MainPageViewModel}}"
+             x:DataType="vm:MainPageViewModel"
+             mtk:LeakMonitorBehavior.Cascade="True"
+             x:Class="Dorisoy.PeriodontalChat.MainPage">
+
+    <ContentPage.ToolbarItems>
+        <!--打印-->
+        <ToolbarItem Clicked="Print_Clicked"
+                     Text="打印">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="MaterialSharp"
+                                 Glyph="{x:Static m:MaterialSharp.Print}"
+                                 Color="{StaticResource OnPrimary}"
+                                 Size="50" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <!--下载-->
+        <ToolbarItem Clicked="Download_Clicked"
+                     Text="下载">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="MaterialSharp"
+                                 Glyph="{x:Static m:MaterialSharp.Download}"
+                                 Color="{StaticResource OnPrimary}"
+                                 Size="50" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <!--全屏-->
+        <ToolbarItem  Clicked="OnToggleFullscreenClicked"
+                      Text="全屏">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="MaterialSharp"
+                                 Glyph="{x:Static m:MaterialSharp.Fullscreen}"
+                                 Color="{StaticResource OnPrimary}"
+                                 Size="50" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <!--最小化-->
+        <!--<ToolbarItem  Clicked="OnToggleMinimizeClicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="MaterialSharp"
+                                 Glyph="{x:Static m:MaterialSharp.Minimize}"
+                                 Color="{StaticResource OnPrimary}"
+                                 Size="45" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>-->
+        <!--最大化-->
+        <!--<ToolbarItem  Clicked="OnToggleMaximizeClicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="MaterialSharp"
+                                 Glyph="{x:Static m:MaterialSharp.Maximize}"
+                                 Color="{StaticResource OnPrimary}"
+                                 Size="45" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>-->
+
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="0">
+            <v:top Margin="0"
+                   BindingContext="{Binding Model}" />
+            <v:table1 Margin="0"
+                      BindingContext="{Binding Model}" />
+            <v:table2 Margin="0"
+                      BindingContext="{Binding Model}" />
+            <BoxView StyleClass="Divider"
+                     Margin="0,10" />
+            <v:table3 Margin="0"
+                      BindingContext="{Binding Model}" />
+            <v:table4 Margin="0"
+                      BindingContext="{Binding Model}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

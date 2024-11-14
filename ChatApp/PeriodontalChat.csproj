@@ -1,0 +1,1475 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<Import Project="..\maui.common.props" />
+	
+	<PropertyGroup>
+		<TargetFrameworks>net8.0-android;</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
+		
+		
+		<OutputType>Exe</OutputType>
+		<RootNamespace>Dorisoy.PeriodontalChat</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<IsPackable>false</IsPackable>
+
+		<!-- Display name -->
+		<ApplicationTitle>Dorisoy.PeriodontalChat</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.sinol.Dorisoy.PeriodontalChat</ApplicationId>
+		<ApplicationIdGuid>7a34e540-71b6-437a-ba91-f21842e4e35f</ApplicationIdGuid>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.19041.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.19041.0</TargetPlatformMinVersion>
+	</PropertyGroup>
+
+	<!--<PropertyGroup Condition="'$(TargetFramework)' == 'net8.0-windows10.0.19041.0'">
+		<DefineConstants>$(DefineConstants);WINDOWS</DefineConstants>
+	</PropertyGroup>-->
+	
+	<!--<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-android'">
+		<PackageReference Include="Controls.UserDialogs.Maui">
+			<Version>1.3.0</Version>
+		</PackageReference>
+		<PackageReference Include="PCLStorage" Version="1.0.2" />
+	</ItemGroup>-->
+	
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" Color="#594ae2" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#594ae2" BaseSize="128,128" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Drawable\f1.png" />
+	  <None Remove="Resources\Drawable\f2.png" />
+	  <None Remove="Resources\Drawable\f3.png" />
+	  <None Remove="Resources\Drawable\icon.jpg" />
+	  <None Remove="Resources\Drawable\null17.png" />
+	  <None Remove="Resources\Drawable\t11.png" />
+	  <None Remove="Resources\Drawable\t112.png" />
+	  <None Remove="Resources\Drawable\t112b.png" />
+	  <None Remove="Resources\Drawable\t112i.png" />
+	  <None Remove="Resources\Drawable\t112k31.png" />
+	  <None Remove="Resources\Drawable\t112k32.png" />
+	  <None Remove="Resources\Drawable\t112k41.png" />
+	  <None Remove="Resources\Drawable\t112k42.png" />
+	  <None Remove="Resources\Drawable\t112k5.png" />
+	  <None Remove="Resources\Drawable\t112k6.png" />
+	  <None Remove="Resources\Drawable\t112r.png" />
+	  <None Remove="Resources\Drawable\t11b.png" />
+	  <None Remove="Resources\Drawable\t11i.png" />
+	  <None Remove="Resources\Drawable\t11k31.png" />
+	  <None Remove="Resources\Drawable\t11k32.png" />
+	  <None Remove="Resources\Drawable\t11k41.png" />
+	  <None Remove="Resources\Drawable\t11k42.png" />
+	  <None Remove="Resources\Drawable\t11k5.png" />
+	  <None Remove="Resources\Drawable\t11k6.png" />
+	  <None Remove="Resources\Drawable\t11r.png" />
+	  <None Remove="Resources\Drawable\t12.png" />
+	  <None Remove="Resources\Drawable\t122.png" />
+	  <None Remove="Resources\Drawable\t122b.png" />
+	  <None Remove="Resources\Drawable\t122i.png" />
+	  <None Remove="Resources\Drawable\t122k31.png" />
+	  <None Remove="Resources\Drawable\t122k32.png" />
+	  <None Remove="Resources\Drawable\t122k41.png" />
+	  <None Remove="Resources\Drawable\t122k42.png" />
+	  <None Remove="Resources\Drawable\t122k5.png" />
+	  <None Remove="Resources\Drawable\t122k6.png" />
+	  <None Remove="Resources\Drawable\t122r.png" />
+	  <None Remove="Resources\Drawable\t12b.png" />
+	  <None Remove="Resources\Drawable\t12i.png" />
+	  <None Remove="Resources\Drawable\t12k31.png" />
+	  <None Remove="Resources\Drawable\t12k32.png" />
+	  <None Remove="Resources\Drawable\t12k41.png" />
+	  <None Remove="Resources\Drawable\t12k42.png" />
+	  <None Remove="Resources\Drawable\t12k5.png" />
+	  <None Remove="Resources\Drawable\t12k6.png" />
+	  <None Remove="Resources\Drawable\t12r.png" />
+	  <None Remove="Resources\Drawable\t13.png" />
+	  <None Remove="Resources\Drawable\t132.png" />
+	  <None Remove="Resources\Drawable\t132b.png" />
+	  <None Remove="Resources\Drawable\t132i.png" />
+	  <None Remove="Resources\Drawable\t132k31.png" />
+	  <None Remove="Resources\Drawable\t132k32.png" />
+	  <None Remove="Resources\Drawable\t132k41.png" />
+	  <None Remove="Resources\Drawable\t132k42.png" />
+	  <None Remove="Resources\Drawable\t132k5.png" />
+	  <None Remove="Resources\Drawable\t132k6.png" />
+	  <None Remove="Resources\Drawable\t132r.png" />
+	  <None Remove="Resources\Drawable\t13b.png" />
+	  <None Remove="Resources\Drawable\t13i.png" />
+	  <None Remove="Resources\Drawable\t13k31.png" />
+	  <None Remove="Resources\Drawable\t13k32.png" />
+	  <None Remove="Resources\Drawable\t13k41.png" />
+	  <None Remove="Resources\Drawable\t13k42.png" />
+	  <None Remove="Resources\Drawable\t13k5.png" />
+	  <None Remove="Resources\Drawable\t13k6.png" />
+	  <None Remove="Resources\Drawable\t13r.png" />
+	  <None Remove="Resources\Drawable\t14.png" />
+	  <None Remove="Resources\Drawable\t142.png" />
+	  <None Remove="Resources\Drawable\t142b.png" />
+	  <None Remove="Resources\Drawable\t142i.png" />
+	  <None Remove="Resources\Drawable\t142k1.png" />
+	  <None Remove="Resources\Drawable\t142k21.png" />
+	  <None Remove="Resources\Drawable\t142k22.png" />
+	  <None Remove="Resources\Drawable\t142k5.png" />
+	  <None Remove="Resources\Drawable\t142k61.png" />
+	  <None Remove="Resources\Drawable\t142k62.png" />
+	  <None Remove="Resources\Drawable\t142r.png" />
+	  <None Remove="Resources\Drawable\t14b.png" />
+	  <None Remove="Resources\Drawable\t14i.png" />
+	  <None Remove="Resources\Drawable\t14k1.png" />
+	  <None Remove="Resources\Drawable\t14k21.png" />
+	  <None Remove="Resources\Drawable\t14k22.png" />
+	  <None Remove="Resources\Drawable\t14k5.png" />
+	  <None Remove="Resources\Drawable\t14k61.png" />
+	  <None Remove="Resources\Drawable\t14k62.png" />
+	  <None Remove="Resources\Drawable\t14r.png" />
+	  <None Remove="Resources\Drawable\t15.png" />
+	  <None Remove="Resources\Drawable\t152.png" />
+	  <None Remove="Resources\Drawable\t152b.png" />
+	  <None Remove="Resources\Drawable\t152i.png" />
+	  <None Remove="Resources\Drawable\t152k1.png" />
+	  <None Remove="Resources\Drawable\t152k21.png" />
+	  <None Remove="Resources\Drawable\t152k22.png" />
+	  <None Remove="Resources\Drawable\t152k5.png" />
+	  <None Remove="Resources\Drawable\t152k61.png" />
+	  <None Remove="Resources\Drawable\t152k62.png" />
+	  <None Remove="Resources\Drawable\t152r.png" />
+	  <None Remove="Resources\Drawable\t15b.png" />
+	  <None Remove="Resources\Drawable\t15i.png" />
+	  <None Remove="Resources\Drawable\t15k1.png" />
+	  <None Remove="Resources\Drawable\t15k21.png" />
+	  <None Remove="Resources\Drawable\t15k22.png" />
+	  <None Remove="Resources\Drawable\t15k5.png" />
+	  <None Remove="Resources\Drawable\t15k61.png" />
+	  <None Remove="Resources\Drawable\t15k62.png" />
+	  <None Remove="Resources\Drawable\t15r.png" />
+	  <None Remove="Resources\Drawable\t16.png" />
+	  <None Remove="Resources\Drawable\t162.png" />
+	  <None Remove="Resources\Drawable\t162b.png" />
+	  <None Remove="Resources\Drawable\t162i.png" />
+	  <None Remove="Resources\Drawable\t162k1.png" />
+	  <None Remove="Resources\Drawable\t162k21.png" />
+	  <None Remove="Resources\Drawable\t162k22.png" />
+	  <None Remove="Resources\Drawable\t162k5.png" />
+	  <None Remove="Resources\Drawable\t162k61.png" />
+	  <None Remove="Resources\Drawable\t162k62.png" />
+	  <None Remove="Resources\Drawable\t162r.png" />
+	  <None Remove="Resources\Drawable\t16b.png" />
+	  <None Remove="Resources\Drawable\t16i.png" />
+	  <None Remove="Resources\Drawable\t16k1.png" />
+	  <None Remove="Resources\Drawable\t16k21.png" />
+	  <None Remove="Resources\Drawable\t16k22.png" />
+	  <None Remove="Resources\Drawable\t16k5.png" />
+	  <None Remove="Resources\Drawable\t16k61.png" />
+	  <None Remove="Resources\Drawable\t16k62.png" />
+	  <None Remove="Resources\Drawable\t16r.png" />
+	  <None Remove="Resources\Drawable\t17.png" />
+	  <None Remove="Resources\Drawable\t172.png" />
+	  <None Remove="Resources\Drawable\t172b.png" />
+	  <None Remove="Resources\Drawable\t172i.png" />
+	  <None Remove="Resources\Drawable\t172k1.png" />
+	  <None Remove="Resources\Drawable\t172k21.png" />
+	  <None Remove="Resources\Drawable\t172k22.png" />
+	  <None Remove="Resources\Drawable\t172k5.png" />
+	  <None Remove="Resources\Drawable\t172k61.png" />
+	  <None Remove="Resources\Drawable\t172k62.png" />
+	  <None Remove="Resources\Drawable\t172r.png" />
+	  <None Remove="Resources\Drawable\t17b.png" />
+	  <None Remove="Resources\Drawable\t17i.png" />
+	  <None Remove="Resources\Drawable\t17k1.png" />
+	  <None Remove="Resources\Drawable\t17k21.png" />
+	  <None Remove="Resources\Drawable\t17k22.png" />
+	  <None Remove="Resources\Drawable\t17k5.png" />
+	  <None Remove="Resources\Drawable\t17k61.png" />
+	  <None Remove="Resources\Drawable\t17k62.png" />
+	  <None Remove="Resources\Drawable\t17r.png" />
+	  <None Remove="Resources\Drawable\t18.png" />
+	  <None Remove="Resources\Drawable\t182.png" />
+	  <None Remove="Resources\Drawable\t182b.png" />
+	  <None Remove="Resources\Drawable\t182i.png" />
+	  <None Remove="Resources\Drawable\t182k1.png" />
+	  <None Remove="Resources\Drawable\t182k21.png" />
+	  <None Remove="Resources\Drawable\t182k22.png" />
+	  <None Remove="Resources\Drawable\t182k5.png" />
+	  <None Remove="Resources\Drawable\t182k61.png" />
+	  <None Remove="Resources\Drawable\t182k62.png" />
+	  <None Remove="Resources\Drawable\t182r.png" />
+	  <None Remove="Resources\Drawable\t18b.png" />
+	  <None Remove="Resources\Drawable\t18i.png" />
+	  <None Remove="Resources\Drawable\t18k1.png" />
+	  <None Remove="Resources\Drawable\t18k21.png" />
+	  <None Remove="Resources\Drawable\t18k22.png" />
+	  <None Remove="Resources\Drawable\t18k5.png" />
+	  <None Remove="Resources\Drawable\t18k61.png" />
+	  <None Remove="Resources\Drawable\t18k62.png" />
+	  <None Remove="Resources\Drawable\t18r.png" />
+	  <None Remove="Resources\Drawable\t21.png" />
+	  <None Remove="Resources\Drawable\t212.png" />
+	  <None Remove="Resources\Drawable\t212b.png" />
+	  <None Remove="Resources\Drawable\t212i.png" />
+	  <None Remove="Resources\Drawable\t212k31.png" />
+	  <None Remove="Resources\Drawable\t212k32.png" />
+	  <None Remove="Resources\Drawable\t212k41.png" />
+	  <None Remove="Resources\Drawable\t212k42.png" />
+	  <None Remove="Resources\Drawable\t212k5.png" />
+	  <None Remove="Resources\Drawable\t212k6.png" />
+	  <None Remove="Resources\Drawable\t212r.png" />
+	  <None Remove="Resources\Drawable\t21b.png" />
+	  <None Remove="Resources\Drawable\t21i.png" />
+	  <None Remove="Resources\Drawable\t21k31.png" />
+	  <None Remove="Resources\Drawable\t21k32.png" />
+	  <None Remove="Resources\Drawable\t21k41.png" />
+	  <None Remove="Resources\Drawable\t21k42.png" />
+	  <None Remove="Resources\Drawable\t21k5.png" />
+	  <None Remove="Resources\Drawable\t21k6.png" />
+	  <None Remove="Resources\Drawable\t21r.png" />
+	  <None Remove="Resources\Drawable\t22.png" />
+	  <None Remove="Resources\Drawable\t222.png" />
+	  <None Remove="Resources\Drawable\t222b.png" />
+	  <None Remove="Resources\Drawable\t222i.png" />
+	  <None Remove="Resources\Drawable\t222k31.png" />
+	  <None Remove="Resources\Drawable\t222k32.png" />
+	  <None Remove="Resources\Drawable\t222k41.png" />
+	  <None Remove="Resources\Drawable\t222k42.png" />
+	  <None Remove="Resources\Drawable\t222k5.png" />
+	  <None Remove="Resources\Drawable\t222k6.png" />
+	  <None Remove="Resources\Drawable\t222r.png" />
+	  <None Remove="Resources\Drawable\t22b.png" />
+	  <None Remove="Resources\Drawable\t22i.png" />
+	  <None Remove="Resources\Drawable\t22k31.png" />
+	  <None Remove="Resources\Drawable\t22k32.png" />
+	  <None Remove="Resources\Drawable\t22k41.png" />
+	  <None Remove="Resources\Drawable\t22k42.png" />
+	  <None Remove="Resources\Drawable\t22k5.png" />
+	  <None Remove="Resources\Drawable\t22k6.png" />
+	  <None Remove="Resources\Drawable\t22r.png" />
+	  <None Remove="Resources\Drawable\t23.png" />
+	  <None Remove="Resources\Drawable\t232.png" />
+	  <None Remove="Resources\Drawable\t232b.png" />
+	  <None Remove="Resources\Drawable\t232i.png" />
+	  <None Remove="Resources\Drawable\t232k31.png" />
+	  <None Remove="Resources\Drawable\t232k32.png" />
+	  <None Remove="Resources\Drawable\t232k41.png" />
+	  <None Remove="Resources\Drawable\t232k42.png" />
+	  <None Remove="Resources\Drawable\t232k5.png" />
+	  <None Remove="Resources\Drawable\t232k6.png" />
+	  <None Remove="Resources\Drawable\t232r.png" />
+	  <None Remove="Resources\Drawable\t23b.png" />
+	  <None Remove="Resources\Drawable\t23i.png" />
+	  <None Remove="Resources\Drawable\t23k31.png" />
+	  <None Remove="Resources\Drawable\t23k32.png" />
+	  <None Remove="Resources\Drawable\t23k41.png" />
+	  <None Remove="Resources\Drawable\t23k42.png" />
+	  <None Remove="Resources\Drawable\t23k5.png" />
+	  <None Remove="Resources\Drawable\t23k6.png" />
+	  <None Remove="Resources\Drawable\t23r.png" />
+	  <None Remove="Resources\Drawable\t24.png" />
+	  <None Remove="Resources\Drawable\t242.png" />
+	  <None Remove="Resources\Drawable\t242b.png" />
+	  <None Remove="Resources\Drawable\t242i.png" />
+	  <None Remove="Resources\Drawable\t242k1.png" />
+	  <None Remove="Resources\Drawable\t242k21.png" />
+	  <None Remove="Resources\Drawable\t242k22.png" />
+	  <None Remove="Resources\Drawable\t242k5.png" />
+	  <None Remove="Resources\Drawable\t242k61.png" />
+	  <None Remove="Resources\Drawable\t242k62.png" />
+	  <None Remove="Resources\Drawable\t242r.png" />
+	  <None Remove="Resources\Drawable\t24b.png" />
+	  <None Remove="Resources\Drawable\t24i.png" />
+	  <None Remove="Resources\Drawable\t24k1.png" />
+	  <None Remove="Resources\Drawable\t24k21.png" />
+	  <None Remove="Resources\Drawable\t24k22.png" />
+	  <None Remove="Resources\Drawable\t24k5.png" />
+	  <None Remove="Resources\Drawable\t24k61.png" />
+	  <None Remove="Resources\Drawable\t24k62.png" />
+	  <None Remove="Resources\Drawable\t24r.png" />
+	  <None Remove="Resources\Drawable\t25.png" />
+	  <None Remove="Resources\Drawable\t252.png" />
+	  <None Remove="Resources\Drawable\t252b.png" />
+	  <None Remove="Resources\Drawable\t252i.png" />
+	  <None Remove="Resources\Drawable\t252k1.png" />
+	  <None Remove="Resources\Drawable\t252k21.png" />
+	  <None Remove="Resources\Drawable\t252k22.png" />
+	  <None Remove="Resources\Drawable\t252k5.png" />
+	  <None Remove="Resources\Drawable\t252k61.png" />
+	  <None Remove="Resources\Drawable\t252k62.png" />
+	  <None Remove="Resources\Drawable\t252r.png" />
+	  <None Remove="Resources\Drawable\t25b.png" />
+	  <None Remove="Resources\Drawable\t25i.png" />
+	  <None Remove="Resources\Drawable\t25k1.png" />
+	  <None Remove="Resources\Drawable\t25k21.png" />
+	  <None Remove="Resources\Drawable\t25k22.png" />
+	  <None Remove="Resources\Drawable\t25k5.png" />
+	  <None Remove="Resources\Drawable\t25k61.png" />
+	  <None Remove="Resources\Drawable\t25k62.png" />
+	  <None Remove="Resources\Drawable\t25r.png" />
+	  <None Remove="Resources\Drawable\t26.png" />
+	  <None Remove="Resources\Drawable\t262.png" />
+	  <None Remove="Resources\Drawable\t262b.png" />
+	  <None Remove="Resources\Drawable\t262i.png" />
+	  <None Remove="Resources\Drawable\t262k1.png" />
+	  <None Remove="Resources\Drawable\t262k21.png" />
+	  <None Remove="Resources\Drawable\t262k22.png" />
+	  <None Remove="Resources\Drawable\t262k5.png" />
+	  <None Remove="Resources\Drawable\t262k61.png" />
+	  <None Remove="Resources\Drawable\t262k62.png" />
+	  <None Remove="Resources\Drawable\t262r.png" />
+	  <None Remove="Resources\Drawable\t26b.png" />
+	  <None Remove="Resources\Drawable\t26i.png" />
+	  <None Remove="Resources\Drawable\t26k1.png" />
+	  <None Remove="Resources\Drawable\t26k21.png" />
+	  <None Remove="Resources\Drawable\t26k22.png" />
+	  <None Remove="Resources\Drawable\t26k5.png" />
+	  <None Remove="Resources\Drawable\t26k61.png" />
+	  <None Remove="Resources\Drawable\t26k62.png" />
+	  <None Remove="Resources\Drawable\t26r.png" />
+	  <None Remove="Resources\Drawable\t27.png" />
+	  <None Remove="Resources\Drawable\t272.png" />
+	  <None Remove="Resources\Drawable\t272b.png" />
+	  <None Remove="Resources\Drawable\t272i.png" />
+	  <None Remove="Resources\Drawable\t272k1.png" />
+	  <None Remove="Resources\Drawable\t272k21.png" />
+	  <None Remove="Resources\Drawable\t272k22.png" />
+	  <None Remove="Resources\Drawable\t272k5.png" />
+	  <None Remove="Resources\Drawable\t272k61.png" />
+	  <None Remove="Resources\Drawable\t272k62.png" />
+	  <None Remove="Resources\Drawable\t272r.png" />
+	  <None Remove="Resources\Drawable\t27b.png" />
+	  <None Remove="Resources\Drawable\t27i.png" />
+	  <None Remove="Resources\Drawable\t27k1.png" />
+	  <None Remove="Resources\Drawable\t27k21.png" />
+	  <None Remove="Resources\Drawable\t27k22.png" />
+	  <None Remove="Resources\Drawable\t27k5.png" />
+	  <None Remove="Resources\Drawable\t27k61.png" />
+	  <None Remove="Resources\Drawable\t27k62.png" />
+	  <None Remove="Resources\Drawable\t27r.png" />
+	  <None Remove="Resources\Drawable\t28.png" />
+	  <None Remove="Resources\Drawable\t282.png" />
+	  <None Remove="Resources\Drawable\t282b.png" />
+	  <None Remove="Resources\Drawable\t282i.png" />
+	  <None Remove="Resources\Drawable\t282k1.png" />
+	  <None Remove="Resources\Drawable\t282k21.png" />
+	  <None Remove="Resources\Drawable\t282k22.png" />
+	  <None Remove="Resources\Drawable\t282k5.png" />
+	  <None Remove="Resources\Drawable\t282k61.png" />
+	  <None Remove="Resources\Drawable\t282k62.png" />
+	  <None Remove="Resources\Drawable\t282r.png" />
+	  <None Remove="Resources\Drawable\t28b.png" />
+	  <None Remove="Resources\Drawable\t28i.png" />
+	  <None Remove="Resources\Drawable\t28k1.png" />
+	  <None Remove="Resources\Drawable\t28k21.png" />
+	  <None Remove="Resources\Drawable\t28k22.png" />
+	  <None Remove="Resources\Drawable\t28k5.png" />
+	  <None Remove="Resources\Drawable\t28k61.png" />
+	  <None Remove="Resources\Drawable\t28k62.png" />
+	  <None Remove="Resources\Drawable\t28r.png" />
+	  <None Remove="Resources\Drawable\t31.png" />
+	  <None Remove="Resources\Drawable\t312.png" />
+	  <None Remove="Resources\Drawable\t312b.png" />
+	  <None Remove="Resources\Drawable\t312i.png" />
+	  <None Remove="Resources\Drawable\t312k31.png" />
+	  <None Remove="Resources\Drawable\t312k32.png" />
+	  <None Remove="Resources\Drawable\t312k41.png" />
+	  <None Remove="Resources\Drawable\t312k42.png" />
+	  <None Remove="Resources\Drawable\t312k5.png" />
+	  <None Remove="Resources\Drawable\t312k6.png" />
+	  <None Remove="Resources\Drawable\t312r.png" />
+	  <None Remove="Resources\Drawable\t31b.png" />
+	  <None Remove="Resources\Drawable\t31i.png" />
+	  <None Remove="Resources\Drawable\t31k31.png" />
+	  <None Remove="Resources\Drawable\t31k32.png" />
+	  <None Remove="Resources\Drawable\t31k41.png" />
+	  <None Remove="Resources\Drawable\t31k42.png" />
+	  <None Remove="Resources\Drawable\t31k5.png" />
+	  <None Remove="Resources\Drawable\t31k6.png" />
+	  <None Remove="Resources\Drawable\t31r.png" />
+	  <None Remove="Resources\Drawable\t32.png" />
+	  <None Remove="Resources\Drawable\t322.png" />
+	  <None Remove="Resources\Drawable\t322b.png" />
+	  <None Remove="Resources\Drawable\t322i.png" />
+	  <None Remove="Resources\Drawable\t322k31.png" />
+	  <None Remove="Resources\Drawable\t322k32.png" />
+	  <None Remove="Resources\Drawable\t322k41.png" />
+	  <None Remove="Resources\Drawable\t322k42.png" />
+	  <None Remove="Resources\Drawable\t322k5.png" />
+	  <None Remove="Resources\Drawable\t322k6.png" />
+	  <None Remove="Resources\Drawable\t322r.png" />
+	  <None Remove="Resources\Drawable\t32b.png" />
+	  <None Remove="Resources\Drawable\t32i.png" />
+	  <None Remove="Resources\Drawable\t32k31.png" />
+	  <None Remove="Resources\Drawable\t32k32.png" />
+	  <None Remove="Resources\Drawable\t32k41.png" />
+	  <None Remove="Resources\Drawable\t32k42.png" />
+	  <None Remove="Resources\Drawable\t32k5.png" />
+	  <None Remove="Resources\Drawable\t32k6.png" />
+	  <None Remove="Resources\Drawable\t32r.png" />
+	  <None Remove="Resources\Drawable\t33.png" />
+	  <None Remove="Resources\Drawable\t332.png" />
+	  <None Remove="Resources\Drawable\t332b.png" />
+	  <None Remove="Resources\Drawable\t332i.png" />
+	  <None Remove="Resources\Drawable\t332k31.png" />
+	  <None Remove="Resources\Drawable\t332k32.png" />
+	  <None Remove="Resources\Drawable\t332k41.png" />
+	  <None Remove="Resources\Drawable\t332k42.png" />
+	  <None Remove="Resources\Drawable\t332k5.png" />
+	  <None Remove="Resources\Drawable\t332k6.png" />
+	  <None Remove="Resources\Drawable\t332r.png" />
+	  <None Remove="Resources\Drawable\t33b.png" />
+	  <None Remove="Resources\Drawable\t33i.png" />
+	  <None Remove="Resources\Drawable\t33k31.png" />
+	  <None Remove="Resources\Drawable\t33k32.png" />
+	  <None Remove="Resources\Drawable\t33k41.png" />
+	  <None Remove="Resources\Drawable\t33k42.png" />
+	  <None Remove="Resources\Drawable\t33k5.png" />
+	  <None Remove="Resources\Drawable\t33k6.png" />
+	  <None Remove="Resources\Drawable\t33r.png" />
+	  <None Remove="Resources\Drawable\t34.png" />
+	  <None Remove="Resources\Drawable\t342.png" />
+	  <None Remove="Resources\Drawable\t342b.png" />
+	  <None Remove="Resources\Drawable\t342i.png" />
+	  <None Remove="Resources\Drawable\t342k1.png" />
+	  <None Remove="Resources\Drawable\t342k21.png" />
+	  <None Remove="Resources\Drawable\t342k22.png" />
+	  <None Remove="Resources\Drawable\t342k5.png" />
+	  <None Remove="Resources\Drawable\t342k61.png" />
+	  <None Remove="Resources\Drawable\t342k62.png" />
+	  <None Remove="Resources\Drawable\t342r.png" />
+	  <None Remove="Resources\Drawable\t34b.png" />
+	  <None Remove="Resources\Drawable\t34i.png" />
+	  <None Remove="Resources\Drawable\t34k1.png" />
+	  <None Remove="Resources\Drawable\t34k21.png" />
+	  <None Remove="Resources\Drawable\t34k22.png" />
+	  <None Remove="Resources\Drawable\t34k5.png" />
+	  <None Remove="Resources\Drawable\t34k61.png" />
+	  <None Remove="Resources\Drawable\t34k62.png" />
+	  <None Remove="Resources\Drawable\t34r.png" />
+	  <None Remove="Resources\Drawable\t35.png" />
+	  <None Remove="Resources\Drawable\t352.png" />
+	  <None Remove="Resources\Drawable\t352b.png" />
+	  <None Remove="Resources\Drawable\t352i.png" />
+	  <None Remove="Resources\Drawable\t352k1.png" />
+	  <None Remove="Resources\Drawable\t352k21.png" />
+	  <None Remove="Resources\Drawable\t352k22.png" />
+	  <None Remove="Resources\Drawable\t352k5.png" />
+	  <None Remove="Resources\Drawable\t352k61.png" />
+	  <None Remove="Resources\Drawable\t352k62.png" />
+	  <None Remove="Resources\Drawable\t352r.png" />
+	  <None Remove="Resources\Drawable\t35b.png" />
+	  <None Remove="Resources\Drawable\t35i.png" />
+	  <None Remove="Resources\Drawable\t35k1.png" />
+	  <None Remove="Resources\Drawable\t35k21.png" />
+	  <None Remove="Resources\Drawable\t35k22.png" />
+	  <None Remove="Resources\Drawable\t35k5.png" />
+	  <None Remove="Resources\Drawable\t35k61.png" />
+	  <None Remove="Resources\Drawable\t35k62.png" />
+	  <None Remove="Resources\Drawable\t35r.png" />
+	  <None Remove="Resources\Drawable\t36.png" />
+	  <None Remove="Resources\Drawable\t362.png" />
+	  <None Remove="Resources\Drawable\t362b.png" />
+	  <None Remove="Resources\Drawable\t362i.png" />
+	  <None Remove="Resources\Drawable\t362k1.png" />
+	  <None Remove="Resources\Drawable\t362k21.png" />
+	  <None Remove="Resources\Drawable\t362k22.png" />
+	  <None Remove="Resources\Drawable\t362k5.png" />
+	  <None Remove="Resources\Drawable\t362k61.png" />
+	  <None Remove="Resources\Drawable\t362k62.png" />
+	  <None Remove="Resources\Drawable\t362r.png" />
+	  <None Remove="Resources\Drawable\t36b.png" />
+	  <None Remove="Resources\Drawable\t36i.png" />
+	  <None Remove="Resources\Drawable\t36k1.png" />
+	  <None Remove="Resources\Drawable\t36k21.png" />
+	  <None Remove="Resources\Drawable\t36k22.png" />
+	  <None Remove="Resources\Drawable\t36k5.png" />
+	  <None Remove="Resources\Drawable\t36k61.png" />
+	  <None Remove="Resources\Drawable\t36k62.png" />
+	  <None Remove="Resources\Drawable\t36r.png" />
+	  <None Remove="Resources\Drawable\t37.png" />
+	  <None Remove="Resources\Drawable\t372.png" />
+	  <None Remove="Resources\Drawable\t372b.png" />
+	  <None Remove="Resources\Drawable\t372i.png" />
+	  <None Remove="Resources\Drawable\t372k1.png" />
+	  <None Remove="Resources\Drawable\t372k21.png" />
+	  <None Remove="Resources\Drawable\t372k22.png" />
+	  <None Remove="Resources\Drawable\t372k5.png" />
+	  <None Remove="Resources\Drawable\t372k61.png" />
+	  <None Remove="Resources\Drawable\t372k62.png" />
+	  <None Remove="Resources\Drawable\t372r.png" />
+	  <None Remove="Resources\Drawable\t37b.png" />
+	  <None Remove="Resources\Drawable\t37i.png" />
+	  <None Remove="Resources\Drawable\t37k1.png" />
+	  <None Remove="Resources\Drawable\t37k21.png" />
+	  <None Remove="Resources\Drawable\t37k22.png" />
+	  <None Remove="Resources\Drawable\t37k5.png" />
+	  <None Remove="Resources\Drawable\t37k61.png" />
+	  <None Remove="Resources\Drawable\t37k62.png" />
+	  <None Remove="Resources\Drawable\t37r.png" />
+	  <None Remove="Resources\Drawable\t38.png" />
+	  <None Remove="Resources\Drawable\t382.png" />
+	  <None Remove="Resources\Drawable\t382b.png" />
+	  <None Remove="Resources\Drawable\t382i.png" />
+	  <None Remove="Resources\Drawable\t382k1.png" />
+	  <None Remove="Resources\Drawable\t382k21.png" />
+	  <None Remove="Resources\Drawable\t382k22.png" />
+	  <None Remove="Resources\Drawable\t382k5.png" />
+	  <None Remove="Resources\Drawable\t382k61.png" />
+	  <None Remove="Resources\Drawable\t382k62.png" />
+	  <None Remove="Resources\Drawable\t382r.png" />
+	  <None Remove="Resources\Drawable\t38b.png" />
+	  <None Remove="Resources\Drawable\t38i.png" />
+	  <None Remove="Resources\Drawable\t38k1.png" />
+	  <None Remove="Resources\Drawable\t38k21.png" />
+	  <None Remove="Resources\Drawable\t38k22.png" />
+	  <None Remove="Resources\Drawable\t38k5.png" />
+	  <None Remove="Resources\Drawable\t38k61.png" />
+	  <None Remove="Resources\Drawable\t38k62.png" />
+	  <None Remove="Resources\Drawable\t38r.png" />
+	  <None Remove="Resources\Drawable\t41.png" />
+	  <None Remove="Resources\Drawable\t412.png" />
+	  <None Remove="Resources\Drawable\t412b.png" />
+	  <None Remove="Resources\Drawable\t412i.png" />
+	  <None Remove="Resources\Drawable\t412k31.png" />
+	  <None Remove="Resources\Drawable\t412k32.png" />
+	  <None Remove="Resources\Drawable\t412k41.png" />
+	  <None Remove="Resources\Drawable\t412k42.png" />
+	  <None Remove="Resources\Drawable\t412k5.png" />
+	  <None Remove="Resources\Drawable\t412k6.png" />
+	  <None Remove="Resources\Drawable\t412r.png" />
+	  <None Remove="Resources\Drawable\t41b.png" />
+	  <None Remove="Resources\Drawable\t41i.png" />
+	  <None Remove="Resources\Drawable\t41k31.png" />
+	  <None Remove="Resources\Drawable\t41k32.png" />
+	  <None Remove="Resources\Drawable\t41k41.png" />
+	  <None Remove="Resources\Drawable\t41k42.png" />
+	  <None Remove="Resources\Drawable\t41k5.png" />
+	  <None Remove="Resources\Drawable\t41k6.png" />
+	  <None Remove="Resources\Drawable\t41r.png" />
+	  <None Remove="Resources\Drawable\t42.png" />
+	  <None Remove="Resources\Drawable\t422.png" />
+	  <None Remove="Resources\Drawable\t422b.png" />
+	  <None Remove="Resources\Drawable\t422i.png" />
+	  <None Remove="Resources\Drawable\t422k31.png" />
+	  <None Remove="Resources\Drawable\t422k32.png" />
+	  <None Remove="Resources\Drawable\t422k41.png" />
+	  <None Remove="Resources\Drawable\t422k42.png" />
+	  <None Remove="Resources\Drawable\t422k5.png" />
+	  <None Remove="Resources\Drawable\t422k6.png" />
+	  <None Remove="Resources\Drawable\t422r.png" />
+	  <None Remove="Resources\Drawable\t42b.png" />
+	  <None Remove="Resources\Drawable\t42i.png" />
+	  <None Remove="Resources\Drawable\t42k31.png" />
+	  <None Remove="Resources\Drawable\t42k32.png" />
+	  <None Remove="Resources\Drawable\t42k41.png" />
+	  <None Remove="Resources\Drawable\t42k42.png" />
+	  <None Remove="Resources\Drawable\t42k5.png" />
+	  <None Remove="Resources\Drawable\t42k6.png" />
+	  <None Remove="Resources\Drawable\t42r.png" />
+	  <None Remove="Resources\Drawable\t43.png" />
+	  <None Remove="Resources\Drawable\t432.png" />
+	  <None Remove="Resources\Drawable\t432b.png" />
+	  <None Remove="Resources\Drawable\t432i.png" />
+	  <None Remove="Resources\Drawable\t432k31.png" />
+	  <None Remove="Resources\Drawable\t432k32.png" />
+	  <None Remove="Resources\Drawable\t432k41.png" />
+	  <None Remove="Resources\Drawable\t432k42.png" />
+	  <None Remove="Resources\Drawable\t432k5.png" />
+	  <None Remove="Resources\Drawable\t432k6.png" />
+	  <None Remove="Resources\Drawable\t432r.png" />
+	  <None Remove="Resources\Drawable\t43b.png" />
+	  <None Remove="Resources\Drawable\t43i.png" />
+	  <None Remove="Resources\Drawable\t43k31.png" />
+	  <None Remove="Resources\Drawable\t43k32.png" />
+	  <None Remove="Resources\Drawable\t43k41.png" />
+	  <None Remove="Resources\Drawable\t43k42.png" />
+	  <None Remove="Resources\Drawable\t43k5.png" />
+	  <None Remove="Resources\Drawable\t43k6.png" />
+	  <None Remove="Resources\Drawable\t43r.png" />
+	  <None Remove="Resources\Drawable\t44.png" />
+	  <None Remove="Resources\Drawable\t442.png" />
+	  <None Remove="Resources\Drawable\t442b.png" />
+	  <None Remove="Resources\Drawable\t442i.png" />
+	  <None Remove="Resources\Drawable\t442k1.png" />
+	  <None Remove="Resources\Drawable\t442k21.png" />
+	  <None Remove="Resources\Drawable\t442k22.png" />
+	  <None Remove="Resources\Drawable\t442k5.png" />
+	  <None Remove="Resources\Drawable\t442k61.png" />
+	  <None Remove="Resources\Drawable\t442k62.png" />
+	  <None Remove="Resources\Drawable\t442r.png" />
+	  <None Remove="Resources\Drawable\t44b.png" />
+	  <None Remove="Resources\Drawable\t44i.png" />
+	  <None Remove="Resources\Drawable\t44k1.png" />
+	  <None Remove="Resources\Drawable\t44k21.png" />
+	  <None Remove="Resources\Drawable\t44k22.png" />
+	  <None Remove="Resources\Drawable\t44k5.png" />
+	  <None Remove="Resources\Drawable\t44k61.png" />
+	  <None Remove="Resources\Drawable\t44k62.png" />
+	  <None Remove="Resources\Drawable\t44r.png" />
+	  <None Remove="Resources\Drawable\t45.png" />
+	  <None Remove="Resources\Drawable\t452.png" />
+	  <None Remove="Resources\Drawable\t452b.png" />
+	  <None Remove="Resources\Drawable\t452i.png" />
+	  <None Remove="Resources\Drawable\t452k1.png" />
+	  <None Remove="Resources\Drawable\t452k21.png" />
+	  <None Remove="Resources\Drawable\t452k22.png" />
+	  <None Remove="Resources\Drawable\t452k5.png" />
+	  <None Remove="Resources\Drawable\t452k61.png" />
+	  <None Remove="Resources\Drawable\t452k62.png" />
+	  <None Remove="Resources\Drawable\t452r.png" />
+	  <None Remove="Resources\Drawable\t45b.png" />
+	  <None Remove="Resources\Drawable\t45i.png" />
+	  <None Remove="Resources\Drawable\t45k1.png" />
+	  <None Remove="Resources\Drawable\t45k21.png" />
+	  <None Remove="Resources\Drawable\t45k22.png" />
+	  <None Remove="Resources\Drawable\t45k5.png" />
+	  <None Remove="Resources\Drawable\t45k61.png" />
+	  <None Remove="Resources\Drawable\t45k62.png" />
+	  <None Remove="Resources\Drawable\t45r.png" />
+	  <None Remove="Resources\Drawable\t46.png" />
+	  <None Remove="Resources\Drawable\t462.png" />
+	  <None Remove="Resources\Drawable\t462b.png" />
+	  <None Remove="Resources\Drawable\t462i.png" />
+	  <None Remove="Resources\Drawable\t462k1.png" />
+	  <None Remove="Resources\Drawable\t462k21.png" />
+	  <None Remove="Resources\Drawable\t462k22.png" />
+	  <None Remove="Resources\Drawable\t462k5.png" />
+	  <None Remove="Resources\Drawable\t462k61.png" />
+	  <None Remove="Resources\Drawable\t462k62.png" />
+	  <None Remove="Resources\Drawable\t462r.png" />
+	  <None Remove="Resources\Drawable\t46b.png" />
+	  <None Remove="Resources\Drawable\t46i.png" />
+	  <None Remove="Resources\Drawable\t46k1.png" />
+	  <None Remove="Resources\Drawable\t46k21.png" />
+	  <None Remove="Resources\Drawable\t46k22.png" />
+	  <None Remove="Resources\Drawable\t46k5.png" />
+	  <None Remove="Resources\Drawable\t46k61.png" />
+	  <None Remove="Resources\Drawable\t46k62.png" />
+	  <None Remove="Resources\Drawable\t46r.png" />
+	  <None Remove="Resources\Drawable\t47.png" />
+	  <None Remove="Resources\Drawable\t472.png" />
+	  <None Remove="Resources\Drawable\t472b.png" />
+	  <None Remove="Resources\Drawable\t472i.png" />
+	  <None Remove="Resources\Drawable\t472k1.png" />
+	  <None Remove="Resources\Drawable\t472k21.png" />
+	  <None Remove="Resources\Drawable\t472k22.png" />
+	  <None Remove="Resources\Drawable\t472k5.png" />
+	  <None Remove="Resources\Drawable\t472k61.png" />
+	  <None Remove="Resources\Drawable\t472k62.png" />
+	  <None Remove="Resources\Drawable\t472r.png" />
+	  <None Remove="Resources\Drawable\t47b.png" />
+	  <None Remove="Resources\Drawable\t47i.png" />
+	  <None Remove="Resources\Drawable\t47k1.png" />
+	  <None Remove="Resources\Drawable\t47k21.png" />
+	  <None Remove="Resources\Drawable\t47k22.png" />
+	  <None Remove="Resources\Drawable\t47k5.png" />
+	  <None Remove="Resources\Drawable\t47k61.png" />
+	  <None Remove="Resources\Drawable\t47k62.png" />
+	  <None Remove="Resources\Drawable\t47r.png" />
+	  <None Remove="Resources\Drawable\t48.png" />
+	  <None Remove="Resources\Drawable\t482.png" />
+	  <None Remove="Resources\Drawable\t482b.png" />
+	  <None Remove="Resources\Drawable\t482i.png" />
+	  <None Remove="Resources\Drawable\t482k1.png" />
+	  <None Remove="Resources\Drawable\t482k21.png" />
+	  <None Remove="Resources\Drawable\t482k22.png" />
+	  <None Remove="Resources\Drawable\t482k5.png" />
+	  <None Remove="Resources\Drawable\t482k61.png" />
+	  <None Remove="Resources\Drawable\t482k62.png" />
+	  <None Remove="Resources\Drawable\t482r.png" />
+	  <None Remove="Resources\Drawable\t48b.png" />
+	  <None Remove="Resources\Drawable\t48i.png" />
+	  <None Remove="Resources\Drawable\t48k1.png" />
+	  <None Remove="Resources\Drawable\t48k21.png" />
+	  <None Remove="Resources\Drawable\t48k22.png" />
+	  <None Remove="Resources\Drawable\t48k5.png" />
+	  <None Remove="Resources\Drawable\t48k61.png" />
+	  <None Remove="Resources\Drawable\t48k62.png" />
+	  <None Remove="Resources\Drawable\t48r.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Include="Resources\Drawable\f1.png" />
+	  <MauiImage Include="Resources\Drawable\f2.png" />
+	  <MauiImage Include="Resources\Drawable\f3.png" />
+	  <MauiImage Include="Resources\Drawable\icon.jpg" />
+	  <MauiImage Include="Resources\Drawable\null17.png" />
+	  <MauiImage Include="Resources\Drawable\t11.png" />
+	  <MauiImage Include="Resources\Drawable\t112.png" />
+	  <MauiImage Include="Resources\Drawable\t112b.png" />
+	  <MauiImage Include="Resources\Drawable\t112i.png" />
+	  <MauiImage Include="Resources\Drawable\t112k31.png" />
+	  <MauiImage Include="Resources\Drawable\t112k32.png" />
+	  <MauiImage Include="Resources\Drawable\t112k41.png" />
+	  <MauiImage Include="Resources\Drawable\t112k42.png" />
+	  <MauiImage Include="Resources\Drawable\t112k5.png" />
+	  <MauiImage Include="Resources\Drawable\t112k6.png" />
+	  <MauiImage Include="Resources\Drawable\t112r.png" />
+	  <MauiImage Include="Resources\Drawable\t11b.png" />
+	  <MauiImage Include="Resources\Drawable\t11i.png" />
+	  <MauiImage Include="Resources\Drawable\t11k31.png" />
+	  <MauiImage Include="Resources\Drawable\t11k32.png" />
+	  <MauiImage Include="Resources\Drawable\t11k41.png" />
+	  <MauiImage Include="Resources\Drawable\t11k42.png" />
+	  <MauiImage Include="Resources\Drawable\t11k5.png" />
+	  <MauiImage Include="Resources\Drawable\t11k6.png" />
+	  <MauiImage Include="Resources\Drawable\t11r.png" />
+	  <MauiImage Include="Resources\Drawable\t12.png" />
+	  <MauiImage Include="Resources\Drawable\t122.png" />
+	  <MauiImage Include="Resources\Drawable\t122b.png" />
+	  <MauiImage Include="Resources\Drawable\t122i.png" />
+	  <MauiImage Include="Resources\Drawable\t122k31.png" />
+	  <MauiImage Include="Resources\Drawable\t122k32.png" />
+	  <MauiImage Include="Resources\Drawable\t122k41.png" />
+	  <MauiImage Include="Resources\Drawable\t122k42.png" />
+	  <MauiImage Include="Resources\Drawable\t122k5.png" />
+	  <MauiImage Include="Resources\Drawable\t122k6.png" />
+	  <MauiImage Include="Resources\Drawable\t122r.png" />
+	  <MauiImage Include="Resources\Drawable\t12b.png" />
+	  <MauiImage Include="Resources\Drawable\t12i.png" />
+	  <MauiImage Include="Resources\Drawable\t12k31.png" />
+	  <MauiImage Include="Resources\Drawable\t12k32.png" />
+	  <MauiImage Include="Resources\Drawable\t12k41.png" />
+	  <MauiImage Include="Resources\Drawable\t12k42.png" />
+	  <MauiImage Include="Resources\Drawable\t12k5.png" />
+	  <MauiImage Include="Resources\Drawable\t12k6.png" />
+	  <MauiImage Include="Resources\Drawable\t12r.png" />
+	  <MauiImage Include="Resources\Drawable\t13.png" />
+	  <MauiImage Include="Resources\Drawable\t132.png" />
+	  <MauiImage Include="Resources\Drawable\t132b.png" />
+	  <MauiImage Include="Resources\Drawable\t132i.png" />
+	  <MauiImage Include="Resources\Drawable\t132k31.png" />
+	  <MauiImage Include="Resources\Drawable\t132k32.png" />
+	  <MauiImage Include="Resources\Drawable\t132k41.png" />
+	  <MauiImage Include="Resources\Drawable\t132k42.png" />
+	  <MauiImage Include="Resources\Drawable\t132k5.png" />
+	  <MauiImage Include="Resources\Drawable\t132k6.png" />
+	  <MauiImage Include="Resources\Drawable\t132r.png" />
+	  <MauiImage Include="Resources\Drawable\t13b.png" />
+	  <MauiImage Include="Resources\Drawable\t13i.png" />
+	  <MauiImage Include="Resources\Drawable\t13k31.png" />
+	  <MauiImage Include="Resources\Drawable\t13k32.png" />
+	  <MauiImage Include="Resources\Drawable\t13k41.png" />
+	  <MauiImage Include="Resources\Drawable\t13k42.png" />
+	  <MauiImage Include="Resources\Drawable\t13k5.png" />
+	  <MauiImage Include="Resources\Drawable\t13k6.png" />
+	  <MauiImage Include="Resources\Drawable\t13r.png" />
+	  <MauiImage Include="Resources\Drawable\t14.png" />
+	  <MauiImage Include="Resources\Drawable\t142.png" />
+	  <MauiImage Include="Resources\Drawable\t142b.png" />
+	  <MauiImage Include="Resources\Drawable\t142i.png" />
+	  <MauiImage Include="Resources\Drawable\t142k1.png" />
+	  <MauiImage Include="Resources\Drawable\t142k21.png" />
+	  <MauiImage Include="Resources\Drawable\t142k22.png" />
+	  <MauiImage Include="Resources\Drawable\t142k5.png" />
+	  <MauiImage Include="Resources\Drawable\t142k61.png" />
+	  <MauiImage Include="Resources\Drawable\t142k62.png" />
+	  <MauiImage Include="Resources\Drawable\t142r.png" />
+	  <MauiImage Include="Resources\Drawable\t14b.png" />
+	  <MauiImage Include="Resources\Drawable\t14i.png" />
+	  <MauiImage Include="Resources\Drawable\t14k1.png" />
+	  <MauiImage Include="Resources\Drawable\t14k21.png" />
+	  <MauiImage Include="Resources\Drawable\t14k22.png" />
+	  <MauiImage Include="Resources\Drawable\t14k5.png" />
+	  <MauiImage Include="Resources\Drawable\t14k61.png" />
+	  <MauiImage Include="Resources\Drawable\t14k62.png" />
+	  <MauiImage Include="Resources\Drawable\t14r.png" />
+	  <MauiImage Include="Resources\Drawable\t15.png" />
+	  <MauiImage Include="Resources\Drawable\t152.png" />
+	  <MauiImage Include="Resources\Drawable\t152b.png" />
+	  <MauiImage Include="Resources\Drawable\t152i.png" />
+	  <MauiImage Include="Resources\Drawable\t152k1.png" />
+	  <MauiImage Include="Resources\Drawable\t152k21.png" />
+	  <MauiImage Include="Resources\Drawable\t152k22.png" />
+	  <MauiImage Include="Resources\Drawable\t152k5.png" />
+	  <MauiImage Include="Resources\Drawable\t152k61.png" />
+	  <MauiImage Include="Resources\Drawable\t152k62.png" />
+	  <MauiImage Include="Resources\Drawable\t152r.png" />
+	  <MauiImage Include="Resources\Drawable\t15b.png" />
+	  <MauiImage Include="Resources\Drawable\t15i.png" />
+	  <MauiImage Include="Resources\Drawable\t15k1.png" />
+	  <MauiImage Include="Resources\Drawable\t15k21.png" />
+	  <MauiImage Include="Resources\Drawable\t15k22.png" />
+	  <MauiImage Include="Resources\Drawable\t15k5.png" />
+	  <MauiImage Include="Resources\Drawable\t15k61.png" />
+	  <MauiImage Include="Resources\Drawable\t15k62.png" />
+	  <MauiImage Include="Resources\Drawable\t15r.png" />
+	  <MauiImage Include="Resources\Drawable\t16.png" />
+	  <MauiImage Include="Resources\Drawable\t162.png" />
+	  <MauiImage Include="Resources\Drawable\t162b.png" />
+	  <MauiImage Include="Resources\Drawable\t162i.png" />
+	  <MauiImage Include="Resources\Drawable\t162k1.png" />
+	  <MauiImage Include="Resources\Drawable\t162k21.png" />
+	  <MauiImage Include="Resources\Drawable\t162k22.png" />
+	  <MauiImage Include="Resources\Drawable\t162k5.png" />
+	  <MauiImage Include="Resources\Drawable\t162k61.png" />
+	  <MauiImage Include="Resources\Drawable\t162k62.png" />
+	  <MauiImage Include="Resources\Drawable\t162r.png" />
+	  <MauiImage Include="Resources\Drawable\t16b.png" />
+	  <MauiImage Include="Resources\Drawable\t16i.png" />
+	  <MauiImage Include="Resources\Drawable\t16k1.png" />
+	  <MauiImage Include="Resources\Drawable\t16k21.png" />
+	  <MauiImage Include="Resources\Drawable\t16k22.png" />
+	  <MauiImage Include="Resources\Drawable\t16k5.png" />
+	  <MauiImage Include="Resources\Drawable\t16k61.png" />
+	  <MauiImage Include="Resources\Drawable\t16k62.png" />
+	  <MauiImage Include="Resources\Drawable\t16r.png" />
+	  <MauiImage Include="Resources\Drawable\t17.png" />
+	  <MauiImage Include="Resources\Drawable\t172.png" />
+	  <MauiImage Include="Resources\Drawable\t172b.png" />
+	  <MauiImage Include="Resources\Drawable\t172i.png" />
+	  <MauiImage Include="Resources\Drawable\t172k1.png" />
+	  <MauiImage Include="Resources\Drawable\t172k21.png" />
+	  <MauiImage Include="Resources\Drawable\t172k22.png" />
+	  <MauiImage Include="Resources\Drawable\t172k5.png" />
+	  <MauiImage Include="Resources\Drawable\t172k61.png" />
+	  <MauiImage Include="Resources\Drawable\t172k62.png" />
+	  <MauiImage Include="Resources\Drawable\t172r.png" />
+	  <MauiImage Include="Resources\Drawable\t17b.png" />
+	  <MauiImage Include="Resources\Drawable\t17i.png" />
+	  <MauiImage Include="Resources\Drawable\t17k1.png" />
+	  <MauiImage Include="Resources\Drawable\t17k21.png" />
+	  <MauiImage Include="Resources\Drawable\t17k22.png" />
+	  <MauiImage Include="Resources\Drawable\t17k5.png" />
+	  <MauiImage Include="Resources\Drawable\t17k61.png" />
+	  <MauiImage Include="Resources\Drawable\t17k62.png" />
+	  <MauiImage Include="Resources\Drawable\t17r.png" />
+	  <MauiImage Include="Resources\Drawable\t18.png" />
+	  <MauiImage Include="Resources\Drawable\t182.png" />
+	  <MauiImage Include="Resources\Drawable\t182b.png" />
+	  <MauiImage Include="Resources\Drawable\t182i.png" />
+	  <MauiImage Include="Resources\Drawable\t182k1.png" />
+	  <MauiImage Include="Resources\Drawable\t182k21.png" />
+	  <MauiImage Include="Resources\Drawable\t182k22.png" />
+	  <MauiImage Include="Resources\Drawable\t182k5.png" />
+	  <MauiImage Include="Resources\Drawable\t182k61.png" />
+	  <MauiImage Include="Resources\Drawable\t182k62.png" />
+	  <MauiImage Include="Resources\Drawable\t182r.png" />
+	  <MauiImage Include="Resources\Drawable\t18b.png" />
+	  <MauiImage Include="Resources\Drawable\t18i.png" />
+	  <MauiImage Include="Resources\Drawable\t18k1.png" />
+	  <MauiImage Include="Resources\Drawable\t18k21.png" />
+	  <MauiImage Include="Resources\Drawable\t18k22.png" />
+	  <MauiImage Include="Resources\Drawable\t18k5.png" />
+	  <MauiImage Include="Resources\Drawable\t18k61.png" />
+	  <MauiImage Include="Resources\Drawable\t18k62.png" />
+	  <MauiImage Include="Resources\Drawable\t18r.png" />
+	  <MauiImage Include="Resources\Drawable\t21.png" />
+	  <MauiImage Include="Resources\Drawable\t212.png" />
+	  <MauiImage Include="Resources\Drawable\t212b.png" />
+	  <MauiImage Include="Resources\Drawable\t212i.png" />
+	  <MauiImage Include="Resources\Drawable\t212k31.png" />
+	  <MauiImage Include="Resources\Drawable\t212k32.png" />
+	  <MauiImage Include="Resources\Drawable\t212k41.png" />
+	  <MauiImage Include="Resources\Drawable\t212k42.png" />
+	  <MauiImage Include="Resources\Drawable\t212k5.png" />
+	  <MauiImage Include="Resources\Drawable\t212k6.png" />
+	  <MauiImage Include="Resources\Drawable\t212r.png" />
+	  <MauiImage Include="Resources\Drawable\t21b.png" />
+	  <MauiImage Include="Resources\Drawable\t21i.png" />
+	  <MauiImage Include="Resources\Drawable\t21k31.png" />
+	  <MauiImage Include="Resources\Drawable\t21k32.png" />
+	  <MauiImage Include="Resources\Drawable\t21k41.png" />
+	  <MauiImage Include="Resources\Drawable\t21k42.png" />
+	  <MauiImage Include="Resources\Drawable\t21k5.png" />
+	  <MauiImage Include="Resources\Drawable\t21k6.png" />
+	  <MauiImage Include="Resources\Drawable\t21r.png" />
+	  <MauiImage Include="Resources\Drawable\t22.png" />
+	  <MauiImage Include="Resources\Drawable\t222.png" />
+	  <MauiImage Include="Resources\Drawable\t222b.png" />
+	  <MauiImage Include="Resources\Drawable\t222i.png" />
+	  <MauiImage Include="Resources\Drawable\t222k31.png" />
+	  <MauiImage Include="Resources\Drawable\t222k32.png" />
+	  <MauiImage Include="Resources\Drawable\t222k41.png" />
+	  <MauiImage Include="Resources\Drawable\t222k42.png" />
+	  <MauiImage Include="Resources\Drawable\t222k5.png" />
+	  <MauiImage Include="Resources\Drawable\t222k6.png" />
+	  <MauiImage Include="Resources\Drawable\t222r.png" />
+	  <MauiImage Include="Resources\Drawable\t22b.png" />
+	  <MauiImage Include="Resources\Drawable\t22i.png" />
+	  <MauiImage Include="Resources\Drawable\t22k31.png" />
+	  <MauiImage Include="Resources\Drawable\t22k32.png" />
+	  <MauiImage Include="Resources\Drawable\t22k41.png" />
+	  <MauiImage Include="Resources\Drawable\t22k42.png" />
+	  <MauiImage Include="Resources\Drawable\t22k5.png" />
+	  <MauiImage Include="Resources\Drawable\t22k6.png" />
+	  <MauiImage Include="Resources\Drawable\t22r.png" />
+	  <MauiImage Include="Resources\Drawable\t23.png" />
+	  <MauiImage Include="Resources\Drawable\t232.png" />
+	  <MauiImage Include="Resources\Drawable\t232b.png" />
+	  <MauiImage Include="Resources\Drawable\t232i.png" />
+	  <MauiImage Include="Resources\Drawable\t232k31.png" />
+	  <MauiImage Include="Resources\Drawable\t232k32.png" />
+	  <MauiImage Include="Resources\Drawable\t232k41.png" />
+	  <MauiImage Include="Resources\Drawable\t232k42.png" />
+	  <MauiImage Include="Resources\Drawable\t232k5.png" />
+	  <MauiImage Include="Resources\Drawable\t232k6.png" />
+	  <MauiImage Include="Resources\Drawable\t232r.png" />
+	  <MauiImage Include="Resources\Drawable\t23b.png" />
+	  <MauiImage Include="Resources\Drawable\t23i.png" />
+	  <MauiImage Include="Resources\Drawable\t23k31.png" />
+	  <MauiImage Include="Resources\Drawable\t23k32.png" />
+	  <MauiImage Include="Resources\Drawable\t23k41.png" />
+	  <MauiImage Include="Resources\Drawable\t23k42.png" />
+	  <MauiImage Include="Resources\Drawable\t23k5.png" />
+	  <MauiImage Include="Resources\Drawable\t23k6.png" />
+	  <MauiImage Include="Resources\Drawable\t23r.png" />
+	  <MauiImage Include="Resources\Drawable\t24.png" />
+	  <MauiImage Include="Resources\Drawable\t242.png" />
+	  <MauiImage Include="Resources\Drawable\t242b.png" />
+	  <MauiImage Include="Resources\Drawable\t242i.png" />
+	  <MauiImage Include="Resources\Drawable\t242k1.png" />
+	  <MauiImage Include="Resources\Drawable\t242k21.png" />
+	  <MauiImage Include="Resources\Drawable\t242k22.png" />
+	  <MauiImage Include="Resources\Drawable\t242k5.png" />
+	  <MauiImage Include="Resources\Drawable\t242k61.png" />
+	  <MauiImage Include="Resources\Drawable\t242k62.png" />
+	  <MauiImage Include="Resources\Drawable\t242r.png" />
+	  <MauiImage Include="Resources\Drawable\t24b.png" />
+	  <MauiImage Include="Resources\Drawable\t24i.png" />
+	  <MauiImage Include="Resources\Drawable\t24k1.png" />
+	  <MauiImage Include="Resources\Drawable\t24k21.png" />
+	  <MauiImage Include="Resources\Drawable\t24k22.png" />
+	  <MauiImage Include="Resources\Drawable\t24k5.png" />
+	  <MauiImage Include="Resources\Drawable\t24k61.png" />
+	  <MauiImage Include="Resources\Drawable\t24k62.png" />
+	  <MauiImage Include="Resources\Drawable\t24r.png" />
+	  <MauiImage Include="Resources\Drawable\t25.png" />
+	  <MauiImage Include="Resources\Drawable\t252.png" />
+	  <MauiImage Include="Resources\Drawable\t252b.png" />
+	  <MauiImage Include="Resources\Drawable\t252i.png" />
+	  <MauiImage Include="Resources\Drawable\t252k1.png" />
+	  <MauiImage Include="Resources\Drawable\t252k21.png" />
+	  <MauiImage Include="Resources\Drawable\t252k22.png" />
+	  <MauiImage Include="Resources\Drawable\t252k5.png" />
+	  <MauiImage Include="Resources\Drawable\t252k61.png" />
+	  <MauiImage Include="Resources\Drawable\t252k62.png" />
+	  <MauiImage Include="Resources\Drawable\t252r.png" />
+	  <MauiImage Include="Resources\Drawable\t25b.png" />
+	  <MauiImage Include="Resources\Drawable\t25i.png" />
+	  <MauiImage Include="Resources\Drawable\t25k1.png" />
+	  <MauiImage Include="Resources\Drawable\t25k21.png" />
+	  <MauiImage Include="Resources\Drawable\t25k22.png" />
+	  <MauiImage Include="Resources\Drawable\t25k5.png" />
+	  <MauiImage Include="Resources\Drawable\t25k61.png" />
+	  <MauiImage Include="Resources\Drawable\t25k62.png" />
+	  <MauiImage Include="Resources\Drawable\t25r.png" />
+	  <MauiImage Include="Resources\Drawable\t26.png" />
+	  <MauiImage Include="Resources\Drawable\t262.png" />
+	  <MauiImage Include="Resources\Drawable\t262b.png" />
+	  <MauiImage Include="Resources\Drawable\t262i.png" />
+	  <MauiImage Include="Resources\Drawable\t262k1.png" />
+	  <MauiImage Include="Resources\Drawable\t262k21.png" />
+	  <MauiImage Include="Resources\Drawable\t262k22.png" />
+	  <MauiImage Include="Resources\Drawable\t262k5.png" />
+	  <MauiImage Include="Resources\Drawable\t262k61.png" />
+	  <MauiImage Include="Resources\Drawable\t262k62.png" />
+	  <MauiImage Include="Resources\Drawable\t262r.png" />
+	  <MauiImage Include="Resources\Drawable\t26b.png" />
+	  <MauiImage Include="Resources\Drawable\t26i.png" />
+	  <MauiImage Include="Resources\Drawable\t26k1.png" />
+	  <MauiImage Include="Resources\Drawable\t26k21.png" />
+	  <MauiImage Include="Resources\Drawable\t26k22.png" />
+	  <MauiImage Include="Resources\Drawable\t26k5.png" />
+	  <MauiImage Include="Resources\Drawable\t26k61.png" />
+	  <MauiImage Include="Resources\Drawable\t26k62.png" />
+	  <MauiImage Include="Resources\Drawable\t26r.png" />
+	  <MauiImage Include="Resources\Drawable\t27.png" />
+	  <MauiImage Include="Resources\Drawable\t272.png" />
+	  <MauiImage Include="Resources\Drawable\t272b.png" />
+	  <MauiImage Include="Resources\Drawable\t272i.png" />
+	  <MauiImage Include="Resources\Drawable\t272k1.png" />
+	  <MauiImage Include="Resources\Drawable\t272k21.png" />
+	  <MauiImage Include="Resources\Drawable\t272k22.png" />
+	  <MauiImage Include="Resources\Drawable\t272k5.png" />
+	  <MauiImage Include="Resources\Drawable\t272k61.png" />
+	  <MauiImage Include="Resources\Drawable\t272k62.png" />
+	  <MauiImage Include="Resources\Drawable\t272r.png" />
+	  <MauiImage Include="Resources\Drawable\t27b.png" />
+	  <MauiImage Include="Resources\Drawable\t27i.png" />
+	  <MauiImage Include="Resources\Drawable\t27k1.png" />
+	  <MauiImage Include="Resources\Drawable\t27k21.png" />
+	  <MauiImage Include="Resources\Drawable\t27k22.png" />
+	  <MauiImage Include="Resources\Drawable\t27k5.png" />
+	  <MauiImage Include="Resources\Drawable\t27k61.png" />
+	  <MauiImage Include="Resources\Drawable\t27k62.png" />
+	  <MauiImage Include="Resources\Drawable\t27r.png" />
+	  <MauiImage Include="Resources\Drawable\t28.png" />
+	  <MauiImage Include="Resources\Drawable\t282.png" />
+	  <MauiImage Include="Resources\Drawable\t282b.png" />
+	  <MauiImage Include="Resources\Drawable\t282i.png" />
+	  <MauiImage Include="Resources\Drawable\t282k1.png" />
+	  <MauiImage Include="Resources\Drawable\t282k21.png" />
+	  <MauiImage Include="Resources\Drawable\t282k22.png" />
+	  <MauiImage Include="Resources\Drawable\t282k5.png" />
+	  <MauiImage Include="Resources\Drawable\t282k61.png" />
+	  <MauiImage Include="Resources\Drawable\t282k62.png" />
+	  <MauiImage Include="Resources\Drawable\t282r.png" />
+	  <MauiImage Include="Resources\Drawable\t28b.png" />
+	  <MauiImage Include="Resources\Drawable\t28i.png" />
+	  <MauiImage Include="Resources\Drawable\t28k1.png" />
+	  <MauiImage Include="Resources\Drawable\t28k21.png" />
+	  <MauiImage Include="Resources\Drawable\t28k22.png" />
+	  <MauiImage Include="Resources\Drawable\t28k5.png" />
+	  <MauiImage Include="Resources\Drawable\t28k61.png" />
+	  <MauiImage Include="Resources\Drawable\t28k62.png" />
+	  <MauiImage Include="Resources\Drawable\t28r.png" />
+	  <MauiImage Include="Resources\Drawable\t31.png" />
+	  <MauiImage Include="Resources\Drawable\t312.png" />
+	  <MauiImage Include="Resources\Drawable\t312b.png" />
+	  <MauiImage Include="Resources\Drawable\t312i.png" />
+	  <MauiImage Include="Resources\Drawable\t312k31.png" />
+	  <MauiImage Include="Resources\Drawable\t312k32.png" />
+	  <MauiImage Include="Resources\Drawable\t312k41.png" />
+	  <MauiImage Include="Resources\Drawable\t312k42.png" />
+	  <MauiImage Include="Resources\Drawable\t312k5.png" />
+	  <MauiImage Include="Resources\Drawable\t312k6.png" />
+	  <MauiImage Include="Resources\Drawable\t312r.png" />
+	  <MauiImage Include="Resources\Drawable\t31b.png" />
+	  <MauiImage Include="Resources\Drawable\t31i.png" />
+	  <MauiImage Include="Resources\Drawable\t31k31.png" />
+	  <MauiImage Include="Resources\Drawable\t31k32.png" />
+	  <MauiImage Include="Resources\Drawable\t31k41.png" />
+	  <MauiImage Include="Resources\Drawable\t31k42.png" />
+	  <MauiImage Include="Resources\Drawable\t31k5.png" />
+	  <MauiImage Include="Resources\Drawable\t31k6.png" />
+	  <MauiImage Include="Resources\Drawable\t31r.png" />
+	  <MauiImage Include="Resources\Drawable\t32.png" />
+	  <MauiImage Include="Resources\Drawable\t322.png" />
+	  <MauiImage Include="Resources\Drawable\t322b.png" />
+	  <MauiImage Include="Resources\Drawable\t322i.png" />
+	  <MauiImage Include="Resources\Drawable\t322k31.png" />
+	  <MauiImage Include="Resources\Drawable\t322k32.png" />
+	  <MauiImage Include="Resources\Drawable\t322k41.png" />
+	  <MauiImage Include="Resources\Drawable\t322k42.png" />
+	  <MauiImage Include="Resources\Drawable\t322k5.png" />
+	  <MauiImage Include="Resources\Drawable\t322k6.png" />
+	  <MauiImage Include="Resources\Drawable\t322r.png" />
+	  <MauiImage Include="Resources\Drawable\t32b.png" />
+	  <MauiImage Include="Resources\Drawable\t32i.png" />
+	  <MauiImage Include="Resources\Drawable\t32k31.png" />
+	  <MauiImage Include="Resources\Drawable\t32k32.png" />
+	  <MauiImage Include="Resources\Drawable\t32k41.png" />
+	  <MauiImage Include="Resources\Drawable\t32k42.png" />
+	  <MauiImage Include="Resources\Drawable\t32k5.png" />
+	  <MauiImage Include="Resources\Drawable\t32k6.png" />
+	  <MauiImage Include="Resources\Drawable\t32r.png" />
+	  <MauiImage Include="Resources\Drawable\t33.png" />
+	  <MauiImage Include="Resources\Drawable\t332.png" />
+	  <MauiImage Include="Resources\Drawable\t332b.png" />
+	  <MauiImage Include="Resources\Drawable\t332i.png" />
+	  <MauiImage Include="Resources\Drawable\t332k31.png" />
+	  <MauiImage Include="Resources\Drawable\t332k32.png" />
+	  <MauiImage Include="Resources\Drawable\t332k41.png" />
+	  <MauiImage Include="Resources\Drawable\t332k42.png" />
+	  <MauiImage Include="Resources\Drawable\t332k5.png" />
+	  <MauiImage Include="Resources\Drawable\t332k6.png" />
+	  <MauiImage Include="Resources\Drawable\t332r.png" />
+	  <MauiImage Include="Resources\Drawable\t33b.png" />
+	  <MauiImage Include="Resources\Drawable\t33i.png" />
+	  <MauiImage Include="Resources\Drawable\t33k31.png" />
+	  <MauiImage Include="Resources\Drawable\t33k32.png" />
+	  <MauiImage Include="Resources\Drawable\t33k41.png" />
+	  <MauiImage Include="Resources\Drawable\t33k42.png" />
+	  <MauiImage Include="Resources\Drawable\t33k5.png" />
+	  <MauiImage Include="Resources\Drawable\t33k6.png" />
+	  <MauiImage Include="Resources\Drawable\t33r.png" />
+	  <MauiImage Include="Resources\Drawable\t34.png" />
+	  <MauiImage Include="Resources\Drawable\t342.png" />
+	  <MauiImage Include="Resources\Drawable\t342b.png" />
+	  <MauiImage Include="Resources\Drawable\t342i.png" />
+	  <MauiImage Include="Resources\Drawable\t342k1.png" />
+	  <MauiImage Include="Resources\Drawable\t342k21.png" />
+	  <MauiImage Include="Resources\Drawable\t342k22.png" />
+	  <MauiImage Include="Resources\Drawable\t342k5.png" />
+	  <MauiImage Include="Resources\Drawable\t342k61.png" />
+	  <MauiImage Include="Resources\Drawable\t342k62.png" />
+	  <MauiImage Include="Resources\Drawable\t342r.png" />
+	  <MauiImage Include="Resources\Drawable\t34b.png" />
+	  <MauiImage Include="Resources\Drawable\t34i.png" />
+	  <MauiImage Include="Resources\Drawable\t34k1.png" />
+	  <MauiImage Include="Resources\Drawable\t34k21.png" />
+	  <MauiImage Include="Resources\Drawable\t34k22.png" />
+	  <MauiImage Include="Resources\Drawable\t34k5.png" />
+	  <MauiImage Include="Resources\Drawable\t34k61.png" />
+	  <MauiImage Include="Resources\Drawable\t34k62.png" />
+	  <MauiImage Include="Resources\Drawable\t34r.png" />
+	  <MauiImage Include="Resources\Drawable\t35.png" />
+	  <MauiImage Include="Resources\Drawable\t352.png" />
+	  <MauiImage Include="Resources\Drawable\t352b.png" />
+	  <MauiImage Include="Resources\Drawable\t352i.png" />
+	  <MauiImage Include="Resources\Drawable\t352k1.png" />
+	  <MauiImage Include="Resources\Drawable\t352k21.png" />
+	  <MauiImage Include="Resources\Drawable\t352k22.png" />
+	  <MauiImage Include="Resources\Drawable\t352k5.png" />
+	  <MauiImage Include="Resources\Drawable\t352k61.png" />
+	  <MauiImage Include="Resources\Drawable\t352k62.png" />
+	  <MauiImage Include="Resources\Drawable\t352r.png" />
+	  <MauiImage Include="Resources\Drawable\t35b.png" />
+	  <MauiImage Include="Resources\Drawable\t35i.png" />
+	  <MauiImage Include="Resources\Drawable\t35k1.png" />
+	  <MauiImage Include="Resources\Drawable\t35k21.png" />
+	  <MauiImage Include="Resources\Drawable\t35k22.png" />
+	  <MauiImage Include="Resources\Drawable\t35k5.png" />
+	  <MauiImage Include="Resources\Drawable\t35k61.png" />
+	  <MauiImage Include="Resources\Drawable\t35k62.png" />
+	  <MauiImage Include="Resources\Drawable\t35r.png" />
+	  <MauiImage Include="Resources\Drawable\t36.png" />
+	  <MauiImage Include="Resources\Drawable\t362.png" />
+	  <MauiImage Include="Resources\Drawable\t362b.png" />
+	  <MauiImage Include="Resources\Drawable\t362i.png" />
+	  <MauiImage Include="Resources\Drawable\t362k1.png" />
+	  <MauiImage Include="Resources\Drawable\t362k21.png" />
+	  <MauiImage Include="Resources\Drawable\t362k22.png" />
+	  <MauiImage Include="Resources\Drawable\t362k5.png" />
+	  <MauiImage Include="Resources\Drawable\t362k61.png" />
+	  <MauiImage Include="Resources\Drawable\t362k62.png" />
+	  <MauiImage Include="Resources\Drawable\t362r.png" />
+	  <MauiImage Include="Resources\Drawable\t36b.png" />
+	  <MauiImage Include="Resources\Drawable\t36i.png" />
+	  <MauiImage Include="Resources\Drawable\t36k1.png" />
+	  <MauiImage Include="Resources\Drawable\t36k21.png" />
+	  <MauiImage Include="Resources\Drawable\t36k22.png" />
+	  <MauiImage Include="Resources\Drawable\t36k5.png" />
+	  <MauiImage Include="Resources\Drawable\t36k61.png" />
+	  <MauiImage Include="Resources\Drawable\t36k62.png" />
+	  <MauiImage Include="Resources\Drawable\t36r.png" />
+	  <MauiImage Include="Resources\Drawable\t37.png" />
+	  <MauiImage Include="Resources\Drawable\t372.png" />
+	  <MauiImage Include="Resources\Drawable\t372b.png" />
+	  <MauiImage Include="Resources\Drawable\t372i.png" />
+	  <MauiImage Include="Resources\Drawable\t372k1.png" />
+	  <MauiImage Include="Resources\Drawable\t372k21.png" />
+	  <MauiImage Include="Resources\Drawable\t372k22.png" />
+	  <MauiImage Include="Resources\Drawable\t372k5.png" />
+	  <MauiImage Include="Resources\Drawable\t372k61.png" />
+	  <MauiImage Include="Resources\Drawable\t372k62.png" />
+	  <MauiImage Include="Resources\Drawable\t372r.png" />
+	  <MauiImage Include="Resources\Drawable\t37b.png" />
+	  <MauiImage Include="Resources\Drawable\t37i.png" />
+	  <MauiImage Include="Resources\Drawable\t37k1.png" />
+	  <MauiImage Include="Resources\Drawable\t37k21.png" />
+	  <MauiImage Include="Resources\Drawable\t37k22.png" />
+	  <MauiImage Include="Resources\Drawable\t37k5.png" />
+	  <MauiImage Include="Resources\Drawable\t37k61.png" />
+	  <MauiImage Include="Resources\Drawable\t37k62.png" />
+	  <MauiImage Include="Resources\Drawable\t37r.png" />
+	  <MauiImage Include="Resources\Drawable\t38.png" />
+	  <MauiImage Include="Resources\Drawable\t382.png" />
+	  <MauiImage Include="Resources\Drawable\t382b.png" />
+	  <MauiImage Include="Resources\Drawable\t382i.png" />
+	  <MauiImage Include="Resources\Drawable\t382k1.png" />
+	  <MauiImage Include="Resources\Drawable\t382k21.png" />
+	  <MauiImage Include="Resources\Drawable\t382k22.png" />
+	  <MauiImage Include="Resources\Drawable\t382k5.png" />
+	  <MauiImage Include="Resources\Drawable\t382k61.png" />
+	  <MauiImage Include="Resources\Drawable\t382k62.png" />
+	  <MauiImage Include="Resources\Drawable\t382r.png" />
+	  <MauiImage Include="Resources\Drawable\t38b.png" />
+	  <MauiImage Include="Resources\Drawable\t38i.png" />
+	  <MauiImage Include="Resources\Drawable\t38k1.png" />
+	  <MauiImage Include="Resources\Drawable\t38k21.png" />
+	  <MauiImage Include="Resources\Drawable\t38k22.png" />
+	  <MauiImage Include="Resources\Drawable\t38k5.png" />
+	  <MauiImage Include="Resources\Drawable\t38k61.png" />
+	  <MauiImage Include="Resources\Drawable\t38k62.png" />
+	  <MauiImage Include="Resources\Drawable\t38r.png" />
+	  <MauiImage Include="Resources\Drawable\t41.png" />
+	  <MauiImage Include="Resources\Drawable\t412.png" />
+	  <MauiImage Include="Resources\Drawable\t412b.png" />
+	  <MauiImage Include="Resources\Drawable\t412i.png" />
+	  <MauiImage Include="Resources\Drawable\t412k31.png" />
+	  <MauiImage Include="Resources\Drawable\t412k32.png" />
+	  <MauiImage Include="Resources\Drawable\t412k41.png" />
+	  <MauiImage Include="Resources\Drawable\t412k42.png" />
+	  <MauiImage Include="Resources\Drawable\t412k5.png" />
+	  <MauiImage Include="Resources\Drawable\t412k6.png" />
+	  <MauiImage Include="Resources\Drawable\t412r.png" />
+	  <MauiImage Include="Resources\Drawable\t41b.png" />
+	  <MauiImage Include="Resources\Drawable\t41i.png" />
+	  <MauiImage Include="Resources\Drawable\t41k31.png" />
+	  <MauiImage Include="Resources\Drawable\t41k32.png" />
+	  <MauiImage Include="Resources\Drawable\t41k41.png" />
+	  <MauiImage Include="Resources\Drawable\t41k42.png" />
+	  <MauiImage Include="Resources\Drawable\t41k5.png" />
+	  <MauiImage Include="Resources\Drawable\t41k6.png" />
+	  <MauiImage Include="Resources\Drawable\t41r.png" />
+	  <MauiImage Include="Resources\Drawable\t42.png" />
+	  <MauiImage Include="Resources\Drawable\t422.png" />
+	  <MauiImage Include="Resources\Drawable\t422b.png" />
+	  <MauiImage Include="Resources\Drawable\t422i.png" />
+	  <MauiImage Include="Resources\Drawable\t422k31.png" />
+	  <MauiImage Include="Resources\Drawable\t422k32.png" />
+	  <MauiImage Include="Resources\Drawable\t422k41.png" />
+	  <MauiImage Include="Resources\Drawable\t422k42.png" />
+	  <MauiImage Include="Resources\Drawable\t422k5.png" />
+	  <MauiImage Include="Resources\Drawable\t422k6.png" />
+	  <MauiImage Include="Resources\Drawable\t422r.png" />
+	  <MauiImage Include="Resources\Drawable\t42b.png" />
+	  <MauiImage Include="Resources\Drawable\t42i.png" />
+	  <MauiImage Include="Resources\Drawable\t42k31.png" />
+	  <MauiImage Include="Resources\Drawable\t42k32.png" />
+	  <MauiImage Include="Resources\Drawable\t42k41.png" />
+	  <MauiImage Include="Resources\Drawable\t42k42.png" />
+	  <MauiImage Include="Resources\Drawable\t42k5.png" />
+	  <MauiImage Include="Resources\Drawable\t42k6.png" />
+	  <MauiImage Include="Resources\Drawable\t42r.png" />
+	  <MauiImage Include="Resources\Drawable\t43.png" />
+	  <MauiImage Include="Resources\Drawable\t432.png" />
+	  <MauiImage Include="Resources\Drawable\t432b.png" />
+	  <MauiImage Include="Resources\Drawable\t432i.png" />
+	  <MauiImage Include="Resources\Drawable\t432k31.png" />
+	  <MauiImage Include="Resources\Drawable\t432k32.png" />
+	  <MauiImage Include="Resources\Drawable\t432k41.png" />
+	  <MauiImage Include="Resources\Drawable\t432k42.png" />
+	  <MauiImage Include="Resources\Drawable\t432k5.png" />
+	  <MauiImage Include="Resources\Drawable\t432k6.png" />
+	  <MauiImage Include="Resources\Drawable\t432r.png" />
+	  <MauiImage Include="Resources\Drawable\t43b.png" />
+	  <MauiImage Include="Resources\Drawable\t43i.png" />
+	  <MauiImage Include="Resources\Drawable\t43k31.png" />
+	  <MauiImage Include="Resources\Drawable\t43k32.png" />
+	  <MauiImage Include="Resources\Drawable\t43k41.png" />
+	  <MauiImage Include="Resources\Drawable\t43k42.png" />
+	  <MauiImage Include="Resources\Drawable\t43k5.png" />
+	  <MauiImage Include="Resources\Drawable\t43k6.png" />
+	  <MauiImage Include="Resources\Drawable\t43r.png" />
+	  <MauiImage Include="Resources\Drawable\t44.png" />
+	  <MauiImage Include="Resources\Drawable\t442.png" />
+	  <MauiImage Include="Resources\Drawable\t442b.png" />
+	  <MauiImage Include="Resources\Drawable\t442i.png" />
+	  <MauiImage Include="Resources\Drawable\t442k1.png" />
+	  <MauiImage Include="Resources\Drawable\t442k21.png" />
+	  <MauiImage Include="Resources\Drawable\t442k22.png" />
+	  <MauiImage Include="Resources\Drawable\t442k5.png" />
+	  <MauiImage Include="Resources\Drawable\t442k61.png" />
+	  <MauiImage Include="Resources\Drawable\t442k62.png" />
+	  <MauiImage Include="Resources\Drawable\t442r.png" />
+	  <MauiImage Include="Resources\Drawable\t44b.png" />
+	  <MauiImage Include="Resources\Drawable\t44i.png" />
+	  <MauiImage Include="Resources\Drawable\t44k1.png" />
+	  <MauiImage Include="Resources\Drawable\t44k21.png" />
+	  <MauiImage Include="Resources\Drawable\t44k22.png" />
+	  <MauiImage Include="Resources\Drawable\t44k5.png" />
+	  <MauiImage Include="Resources\Drawable\t44k61.png" />
+	  <MauiImage Include="Resources\Drawable\t44k62.png" />
+	  <MauiImage Include="Resources\Drawable\t44r.png" />
+	  <MauiImage Include="Resources\Drawable\t45.png" />
+	  <MauiImage Include="Resources\Drawable\t452.png" />
+	  <MauiImage Include="Resources\Drawable\t452b.png" />
+	  <MauiImage Include="Resources\Drawable\t452i.png" />
+	  <MauiImage Include="Resources\Drawable\t452k1.png" />
+	  <MauiImage Include="Resources\Drawable\t452k21.png" />
+	  <MauiImage Include="Resources\Drawable\t452k22.png" />
+	  <MauiImage Include="Resources\Drawable\t452k5.png" />
+	  <MauiImage Include="Resources\Drawable\t452k61.png" />
+	  <MauiImage Include="Resources\Drawable\t452k62.png" />
+	  <MauiImage Include="Resources\Drawable\t452r.png" />
+	  <MauiImage Include="Resources\Drawable\t45b.png" />
+	  <MauiImage Include="Resources\Drawable\t45i.png" />
+	  <MauiImage Include="Resources\Drawable\t45k1.png" />
+	  <MauiImage Include="Resources\Drawable\t45k21.png" />
+	  <MauiImage Include="Resources\Drawable\t45k22.png" />
+	  <MauiImage Include="Resources\Drawable\t45k5.png" />
+	  <MauiImage Include="Resources\Drawable\t45k61.png" />
+	  <MauiImage Include="Resources\Drawable\t45k62.png" />
+	  <MauiImage Include="Resources\Drawable\t45r.png" />
+	  <MauiImage Include="Resources\Drawable\t46.png" />
+	  <MauiImage Include="Resources\Drawable\t462.png" />
+	  <MauiImage Include="Resources\Drawable\t462b.png" />
+	  <MauiImage Include="Resources\Drawable\t462i.png" />
+	  <MauiImage Include="Resources\Drawable\t462k1.png" />
+	  <MauiImage Include="Resources\Drawable\t462k21.png" />
+	  <MauiImage Include="Resources\Drawable\t462k22.png" />
+	  <MauiImage Include="Resources\Drawable\t462k5.png" />
+	  <MauiImage Include="Resources\Drawable\t462k61.png" />
+	  <MauiImage Include="Resources\Drawable\t462k62.png" />
+	  <MauiImage Include="Resources\Drawable\t462r.png" />
+	  <MauiImage Include="Resources\Drawable\t46b.png" />
+	  <MauiImage Include="Resources\Drawable\t46i.png" />
+	  <MauiImage Include="Resources\Drawable\t46k1.png" />
+	  <MauiImage Include="Resources\Drawable\t46k21.png" />
+	  <MauiImage Include="Resources\Drawable\t46k22.png" />
+	  <MauiImage Include="Resources\Drawable\t46k5.png" />
+	  <MauiImage Include="Resources\Drawable\t46k61.png" />
+	  <MauiImage Include="Resources\Drawable\t46k62.png" />
+	  <MauiImage Include="Resources\Drawable\t46r.png" />
+	  <MauiImage Include="Resources\Drawable\t47.png" />
+	  <MauiImage Include="Resources\Drawable\t472.png" />
+	  <MauiImage Include="Resources\Drawable\t472b.png" />
+	  <MauiImage Include="Resources\Drawable\t472i.png" />
+	  <MauiImage Include="Resources\Drawable\t472k1.png" />
+	  <MauiImage Include="Resources\Drawable\t472k21.png" />
+	  <MauiImage Include="Resources\Drawable\t472k22.png" />
+	  <MauiImage Include="Resources\Drawable\t472k5.png" />
+	  <MauiImage Include="Resources\Drawable\t472k61.png" />
+	  <MauiImage Include="Resources\Drawable\t472k62.png" />
+	  <MauiImage Include="Resources\Drawable\t472r.png" />
+	  <MauiImage Include="Resources\Drawable\t47b.png" />
+	  <MauiImage Include="Resources\Drawable\t47i.png" />
+	  <MauiImage Include="Resources\Drawable\t47k1.png" />
+	  <MauiImage Include="Resources\Drawable\t47k21.png" />
+	  <MauiImage Include="Resources\Drawable\t47k22.png" />
+	  <MauiImage Include="Resources\Drawable\t47k5.png" />
+	  <MauiImage Include="Resources\Drawable\t47k61.png" />
+	  <MauiImage Include="Resources\Drawable\t47k62.png" />
+	  <MauiImage Include="Resources\Drawable\t47r.png" />
+	  <MauiImage Include="Resources\Drawable\t48.png" />
+	  <MauiImage Include="Resources\Drawable\t482.png" />
+	  <MauiImage Include="Resources\Drawable\t482b.png" />
+	  <MauiImage Include="Resources\Drawable\t482i.png" />
+	  <MauiImage Include="Resources\Drawable\t482k1.png" />
+	  <MauiImage Include="Resources\Drawable\t482k21.png" />
+	  <MauiImage Include="Resources\Drawable\t482k22.png" />
+	  <MauiImage Include="Resources\Drawable\t482k5.png" />
+	  <MauiImage Include="Resources\Drawable\t482k61.png" />
+	  <MauiImage Include="Resources\Drawable\t482k62.png" />
+	  <MauiImage Include="Resources\Drawable\t482r.png" />
+	  <MauiImage Include="Resources\Drawable\t48b.png" />
+	  <MauiImage Include="Resources\Drawable\t48i.png" />
+	  <MauiImage Include="Resources\Drawable\t48k1.png" />
+	  <MauiImage Include="Resources\Drawable\t48k21.png" />
+	  <MauiImage Include="Resources\Drawable\t48k22.png" />
+	  <MauiImage Include="Resources\Drawable\t48k5.png" />
+	  <MauiImage Include="Resources\Drawable\t48k61.png" />
+	  <MauiImage Include="Resources\Drawable\t48k62.png" />
+	  <MauiImage Include="Resources\Drawable\t48r.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AdamE.MemoryToolkit.Maui" Version="1.0.0" />
+		<PackageReference Include="DotNurse.Injector" Version="2.5.2" />
+		<PackageReference Include="LiveChartsCore.SkiaSharpView.Maui" Version="2.0.0-rc4.5" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="ReactiveUI.Fody" Version="19.5.41" />
+		<PackageReference Include="Bogus" Version="35.6.1" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
+        <PackageReference Include="SkiaSharp.Extended.UI.Maui" Version="2.0.0" />
+        <PackageReference Include="UraniumUI.Blurs" Version="2.10.2" />
+        <PackageReference Include="UraniumUI.Dialogs.CommunityToolkit" Version="2.10.2" />
+        <PackageReference Include="UraniumUI.Dialogs.Mopups" Version="2.10.2" />
+        <PackageReference Include="UraniumUI.Icons.FontAwesome" Version="2.10.2" />
+        <PackageReference Include="UraniumUI.Icons.MaterialIcons" Version="2.10.2" />
+        <PackageReference Include="UraniumUI.Icons.MaterialSymbols" Version="2.10.2" />
+        <PackageReference Include="UraniumUI.Icons.SegoeFluent" Version="2.10.2" />
+        <PackageReference Include="UraniumUI.Validations.DataAnnotations" Version="2.10.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<MauiXaml Update="Pages\**\*.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Pages\Table1\numbertable1.xaml.cs">
+	    <DependentUpon>numbertable1.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\Table4\numbertable4.xaml.cs">
+	    <DependentUpon>numbertable4.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Control\ToggleButton.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Styles\Override.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Pages\Dental\bottom.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </None>
+	  <None Update="Pages\Dental\row10table1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </None>
+	  <None Update="Pages\Dental\row11table1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </None>
+	  <None Update="Pages\Dental\row12table1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </None>
+	  <None Update="Pages\Dental\row13table1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </None>
+	  <None Update="Pages\Dental\row14table1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </None>
+	  <None Update="Pages\Dental\row1table1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </None>
+	  <None Update="Pages\Dental\row2table1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </None>
+	  <None Update="Pages\Dental\row3table1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </None>
+	  <None Update="Pages\Dental\row4table1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </None>
+	  <None Update="Pages\Dental\row5table1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </None>
+	  <None Update="Pages\Dental\row6table1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </None>
+	  <None Update="Pages\Dental\row7table1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </None>
+	  <None Update="Pages\Dental\row8table1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </None>
+	  <None Update="Pages\Dental\row9table1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </None>
+	  <None Update="Pages\Dental\table1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </None>
+	  <None Update="Pages\Dental\table2.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </None>
+	  <None Update="Pages\Dental\table3.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </None>
+	  <None Update="Pages\Dental\table4.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </None>
+	  <None Update="Pages\Dental\top.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.Maui.Controls" Version="8.0.93" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.93" />
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Dorisoy.PeriodontalChat"
+             xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+             x:Class="Dorisoy.PeriodontalChat.Pages.Dental.table3"
+             xmlns:v="clr-namespace:Dorisoy.PeriodontalChat.Pages.Dental">
+    <ContentView.BindingContext>
+        <vm:Periodontal />
+    </ContentView.BindingContext>
+    <Grid RowDefinitions="*,*,*,*,*,*,*,*,210,*"
+          Margin="0">
+        <v:row1table3 Grid.Row="0"
+                      BindingContext="{Binding Table3}" />
+        <v:row2table3 Grid.Row="1"
+                      BindingContext="{Binding Table3}" />
+        <v:row3table3 Grid.Row="2"
+                      BindingContext="{Binding Table3}" />
+        <v:row4table3 Grid.Row="3"
+                      BindingContext="{Binding Table3}" />
+        <v:row5table3 Grid.Row="4"
+                      BindingContext="{Binding Table3}" />
+        <v:row6table3 Grid.Row="5"
+                      BindingContext="{Binding Table3}" />
+        <v:row7table3 Grid.Row="6"
+                      BindingContext="{Binding Table3}" />
+        <v:row8table3 Grid.Row="7"
+                      BindingContext="{Binding Table3}" />
+        <v:row9table3 Grid.Row="8"
+                      BindingContext="{Binding Table3}" />
+        <BoxView StyleClass="Divider"
+                 Margin="0"
+                 Grid.Row="9" />
+    </Grid>
+</ContentView>
